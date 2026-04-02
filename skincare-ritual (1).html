@@ -1,156 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Skincare Ritual</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Lora&family=Cormorant+Garamond&display=swap" rel="stylesheet">
+
 <style>
-  :root {
-    --terracota: #9C6B5A;
-    --terracota-med: #C49A8A;
-    --terracota-clr: #E8D0C8;
-    --bege-rosa: #F2E8E3;
-    --bege-quente: #EDE0D8;
-    --bege-suave: #FAF5F2;
-    --marrom-escuro: #5C3D2E;
-    --marrom-medio: #8B6355;
-    --marrom-claro: #C4A99A;
-    --vermelho: #8B3A2A;
-    --branco: #FFFCFA;
-  }
+:root {
+  --terracota:#9C6B5A;
+  --terracota-med:#C49A8A;
+  --terracota-clr:#E8D0C8;
+  --bege-quente:#EDE0D8;
+  --bege-suave:#FAF5F2;
+  --marrom:#5C3D2E;
+}
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+body{
+  font-family:'Lora',serif;
+  background:var(--bege-suave);
+  margin:0;
+}
 
-  body {
-    background: var(--bege-suave);
-    font-family: 'Lora', serif;
-    color: var(--marrom-escuro);
-    min-height: 100vh;
-    padding-bottom: 48px;
-  }
+.header{
+  text-align:center;
+  padding:25px;
+}
 
-  .header {
-    background: linear-gradient(160deg, var(--bege-quente) 0%, var(--terracota-clr) 100%);
-    padding: 32px 20px 24px;
-    text-align: center;
-  }
+.tabs{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  background:var(--bege-quente);
+}
 
-  .orn {
-    font-family: 'Cormorant Garamond', serif;
-    color: var(--terracota-med);
-    font-size: 16px;
-    letter-spacing: 6px;
-    margin-bottom: 8px;
-  }
+.tab{
+  text-align:center;
+  padding:10px;
+  cursor:pointer;
+  font-size:12px;
+}
 
-  .header h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 36px;
-    font-weight: 300;
-    color: var(--marrom-escuro);
-    letter-spacing: 2px;
-  }
+.tab.active{
+  color:var(--terracota);
+  font-weight:bold;
+}
 
-  .header p {
-    font-style: italic;
-    font-size: 12px;
-    color: var(--terracota);
-    margin-top: 8px;
-  }
+.content{
+  display:none;
+  padding:20px;
+}
 
-  .header-line {
-    width: 60px;
-    height: 1px;
-    background: var(--terracota-med);
-    margin: 12px auto;
-  }
+.content.active{
+  display:block;
+}
 
-  .tabs {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    background: var(--bege-quente);
-    border-bottom: 2px solid var(--terracota-clr);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
+.step{
+  background:white;
+  padding:12px;
+  margin:10px 0;
+  border-radius:10px;
+  cursor:pointer;
+}
 
-  .tabs-row2 {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    background: var(--bege-quente);
-    border-bottom: 2px solid var(--terracota-clr);
-    position: sticky;
-    top: 48px;
-    z-index: 99;
-  }
+.step.done{
+  text-decoration:line-through;
+  opacity:0.6;
+}
 
-  .tab {
-    padding: 11px 4px;
-    font-family: 'Lora', serif;
-    font-size: 10px;
-    color: var(--marrom-claro);
-    cursor: pointer;
-    border-bottom: 2px solid transparent;
-    text-align: center;
-    border-right: 1px solid var(--terracota-clr);
-    transition: 0.3s;
-  }
-
-  .tab.active {
-    color: var(--terracota);
-    border-bottom-color: var(--terracota);
-    background: var(--bege-suave);
-    font-weight: 600;
-  }
-
-  .content {
-    display: none;
-    padding: 20px 16px;
-    max-width: 520px;
-    margin: 0 auto;
-  }
-
-  .content.active {
-    display: block;
-  }
-
-  .step {
-    background: var(--branco);
-    border-radius: 14px;
-    padding: 15px 16px;
-    margin-bottom: 8px;
-    border: 1px solid var(--terracota-clr);
-    cursor: pointer;
-    transition: 0.3s;
-  }
-
-  .step.done {
-    background: var(--bege-rosa);
-  }
-
-  .step-title {
-    font-size: 13.5px;
-    font-weight: 600;
-  }
-
-  .step-desc {
-    font-size: 11.5px;
-    color: var(--marrom-claro);
-    font-style: italic;
-  }
-
-  .aviso {
-    background: #F9EDE8;
-    border: 1px solid var(--vermelho);
-    border-radius: 12px;
-    padding: 12px;
-    font-size: 12px;
-    color: var(--vermelho);
-    text-align: center;
-  }
-
-  .destaque {
-    background: var(--bege-suave);
-    border: 1px solid var(--terracota-clr);
-    border-radius: 12px;
-    padding: 11px;
-    font-size: 12px;
-    color: var(--terracota);
-    text-align: center;
-  }
+input{
+  width:100%;
+}
 </style>
+</head>
+
+<body>
+
+<div class="header">
+<h1>Skincare Ritual</h1>
+<p id="textoManha">Banho ~12:00 · rotina após banho ✨</p>
+</div>
+
+<div class="tabs">
+<div class="tab active" onclick="showTab('manha',this)">☀️ Manhã</div>
+<div class="tab" onclick="showTab('virilha',this)">✿ Virilha</div>
+<div class="tab" onclick="showTab('noite',this)">🌙 Noite</div>
+<div class="tab" onclick="showTab('config',this)">⚙️ Config</div>
+</div>
+
+<!-- MANHÃ -->
+<div class="content active" id="tab-manha">
+
+<div class="step" onclick="toggle(this)">Limpeza do rosto</div>
+<div class="step" onclick="toggle(this)">Gel anti-oleosidade</div>
+<div class="step" onclick="toggle(this)">Sérum</div>
+<div class="step" onclick="toggle(this)">Protetor solar</div>
+
+</div>
+
+<!-- VIRILHA -->
+<div class="content" id="tab-virilha">
+
+<div class="step" onclick="toggle(this)">Sabonete salicílico</div>
+<div class="step" onclick="toggle(this)">Gel</div>
+<div class="step" onclick="toggle(this)">Sérum</div>
+
+</div>
+
+<!-- NOITE -->
+<div class="content" id="tab-noite">
+
+<div class="step" onclick="toggle(this)">Remover maquiagem</div>
+<div class="step" onclick="toggle(this)">Limpeza</div>
+<div class="step" onclick="toggle(this)">Hidratante</div>
+
+</div>
+
+<!-- CONFIG -->
+<div class="content" id="tab-config">
+
+<h3>Personalizar</h3>
+
+<label>Horário do banho</label>
+<input type="time" id="hora">
+
+<label>Produto rosto</label>
+<input type="text" id="rosto">
+
+<label>Gel</label>
+<input type="text" id="gel">
+
+<button onclick="salvar()">Salvar</button>
+
+</div>
+
+<script>
+
+function showTab(id,el){
+document.querySelectorAll('.content').forEach(c=>c.classList.remove('active'));
+document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+
+document.getElementById('tab-'+id).classList.add('active');
+el.classList.add('active');
+}
+
+function toggle(el){
+el.classList.toggle('done');
+}
+
+function salvar(){
+let hora=document.getElementById('hora').value;
+let rosto=document.getElementById('rosto').value;
+let gel=document.getElementById('gel').value;
+
+localStorage.setItem('hora',hora);
+localStorage.setItem('rosto',rosto);
+localStorage.setItem('gel',gel);
+
+carregar();
+}
+
+function carregar(){
+let hora=localStorage.getItem('hora');
+let rosto=localStorage.getItem('rosto');
+let gel=localStorage.getItem('gel');
+
+if(hora){
+document.getElementById('textoManha').innerText="Banho ~"+hora+" · rotina após banho ✨";
+}
+
+if(rosto){
+document.querySelector('#tab-manha .step').innerText=rosto;
+}
+
+if(gel){
+document.querySelectorAll('.step')[1].innerText=gel;
+}
+
+document.getElementById('hora').value=hora||"";
+document.getElementById('rosto').value=rosto||"";
+document.getElementById('gel').value=gel||"";
+}
+
+window.onload=carregar;
+
+</script>
+
+</body>
+</html>
