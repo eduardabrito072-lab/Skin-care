@@ -26,76 +26,86 @@
   .header h1 { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 300; letter-spacing: 2px; }
   
   .tabs { display: grid; grid-template-columns: repeat(3, 1fr); background: var(--bege-quente); position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-  .tab { padding: 12px 5px; font-size: 11px; color: var(--marrom-claro); cursor: pointer; text-align: center; border-bottom: 2px solid transparent; border-right: 1px solid var(--terracota-clr); }
+  .tab { padding: 12px 5px; font-size: 10px; color: var(--marrom-claro); cursor: pointer; text-align: center; border-bottom: 2px solid transparent; border-right: 1px solid var(--terracota-clr); text-transform: uppercase; letter-spacing: 1px; }
   .tab.active { color: var(--terracota); border-bottom-color: var(--terracota); background: var(--bege-suave); font-weight: 600; }
   
   .content { display: none; padding: 20px 16px; max-width: 500px; margin: 0 auto; }
   .content.active { display: block; animation: fadeIn 0.3s ease; }
   @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
+  .section-label { font-family: 'Cormorant Garamond', serif; font-size: 11px; letter-spacing: 3px; color: var(--terracota-med); text-transform: uppercase; text-align: center; margin: 25px 0 15px; border-top: 1px solid var(--terracota-clr); padding-top: 15px; }
+
   .progress-wrap { background: var(--bege-quente); border-radius: 15px; padding: 12px; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
   .progress-bar-bg { flex: 1; height: 6px; background: var(--terracota-clr); border-radius: 10px; }
   .progress-bar { height: 100%; background: var(--terracota); width: 0%; transition: width 0.4s; border-radius: 10px; }
+  .progress-text { font-size: 11px; color: var(--terracota); font-weight: bold; }
 
-  .step { background: var(--branco); border-radius: 12px; padding: 14px; margin-bottom: 8px; display: flex; gap: 12px; border: 1px solid var(--terracota-clr); position: relative; }
+  .step { background: var(--branco); border-radius: 12px; padding: 14px; margin-bottom: 8px; display: flex; gap: 12px; border: 1px solid var(--terracota-clr); position: relative; transition: 0.2s; }
   .step.done { background: var(--bege-rosa); opacity: 0.7; }
-  .step.done .step-title { text-decoration: line-through; }
+  .step.done .step-title { text-decoration: line-through; color: var(--marrom-claro); }
 
-  .checkbox { width: 22px; height: 22px; border-radius: 50%; border: 1.5px solid var(--terracota-clr); flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: white; }
+  .checkbox { width: 22px; height: 22px; border-radius: 50%; border: 1.5px solid var(--terracota-clr); flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: white; margin-top: 2px; }
   .step.done .checkbox { background: var(--terracota); border-color: var(--terracota); }
   .checkbox::after { content: '✓'; color: white; font-size: 12px; display: none; }
   .step.done .checkbox::after { display: block; }
 
-  .step-title { font-size: 14px; font-weight: 600; outline: none; }
+  .step-title { font-size: 14px; font-weight: 600; outline: none; transition: 0.3s; }
   .step-desc { font-size: 11.5px; font-style: italic; color: var(--marrom-claro); outline: none; margin-top: 2px; }
 
-  /* Config Style */
-  .config-btn { background: none; border: none; color: var(--terracota-med); font-size: 18px; cursor: pointer; float: right; }
-  .edit-mode .editable { border-bottom: 1px dashed var(--terracota); background: #fffdf9; padding: 2px; }
+  .edit-mode .editable { border-bottom: 1px dashed var(--terracota); background: #fffdf9; padding: 2px; min-width: 50px; display: inline-block; }
   
-  .save-banner { display: none; background: var(--terracota); color: white; text-align: center; padding: 8px; font-size: 12px; border-radius: 8px; margin-bottom: 10px; }
-
-  .destaque { background: var(--bege-suave); border: 1px solid var(--terracota-clr); border-radius: 10px; padding: 10px; margin-bottom: 15px; font-size: 12px; text-align: center; font-style: italic; }
-  .reset-btn { width: 100%; padding: 10px; background: none; border: 1px solid var(--terracota-clr); border-radius: 20px; color: var(--marrom-claro); margin-top: 20px; font-size: 11px; }
+  .destaque { background: var(--bege-suave); border: 1px solid var(--terracota-clr); border-radius: 10px; padding: 10px; margin-bottom: 15px; font-size: 12px; text-align: center; font-style: italic; line-height: 1.4; }
+  .aviso { background: #F9EDE8; border: 1px solid var(--vermelho); border-radius: 10px; padding: 10px; margin: 15px 0; font-size: 11px; color: var(--vermelho); text-align: center; }
+  
+  .reset-btn { width: 100%; padding: 12px; background: none; border: 1px solid var(--terracota-clr); border-radius: 25px; color: var(--marrom-claro); margin-top: 20px; font-size: 11px; cursor: pointer; }
 </style>
 </head>
 <body>
 
 <div class="header">
+  <div style="font-family: 'Cormorant Garamond'; color: var(--terracota-med); letter-spacing: 4px; font-size: 12px; margin-bottom: 5px;">✦ · ✦ · ✦</div>
   <h1>Skincare Ritual</h1>
-  <p style="font-size: 11px; color: var(--terracota); margin-top: 5px;">Configurações salvam automaticamente no seu navegador</p>
+  <p style="font-size: 11px; color: var(--terracota); font-style: italic;">Sua rotina salva automaticamente</p>
 </div>
 
 <div class="tabs">
   <div class="tab active" onclick="showTab('manha',this)">☀️ Manhã</div>
-  <div class="tab" onclick="showTab('noite',this)">🌙 Noite</div>
+  <div class="tab" onclick="showTab('noite-af',this)">⚡ Noite AF</div>
+  <div class="tab" onclick="showTab('noite-ac',this)">🌙 Noite AC</div>
   <div class="tab" onclick="showTab('virilha',this)">✿ Virilha</div>
   <div class="tab" onclick="showTab('peeling',this)">✦ Peeling</div>
-  <div class="tab" onclick="showTab('semanal',this)">📅 Semanal</div>
-  <div class="tab" onclick="toggleEdit()">⚙️ Edit</div>
+  <div class="tab" onclick="showTab('semanal',this)">⚙️ Configuraçao</div>
 </div>
 
 <div class="content active" id="tab-manha">
-  <div class="save-banner" id="banner-manha">Alterações salvas!</div>
   <div class="progress-wrap">
     <div class="progress-bar-bg"><div class="progress-bar" id="bar-manha"></div></div>
-    <span class="progress-text" id="txt-manha">0/4</span>
+    <span class="progress-text" id="txt-manha">0/0</span>
   </div>
-  <div class="destaque">Banho ~12:00 ✨</div>
-  
-  <div id="steps-manha">
-    </div>
-  <button class="reset-btn" onclick="resetTab('manha')">Resetar Checklist do Dia</button>
+  <div class="destaque">Acorda ~9h · Banho às 12:00 ✨</div>
+  <div id="steps-manha"></div>
+  <button class="reset-btn" onclick="resetTab('manha')">↺ Resetar Checklist</button>
 </div>
 
-<div class="content" id="tab-noite">
+<div class="content" id="tab-noite-af">
   <div class="progress-wrap">
-    <div class="progress-bar-bg"><div class="progress-bar" id="bar-noite"></div></div>
-    <span class="progress-text" id="txt-noite">0/0</span>
+    <div class="progress-bar-bg"><div class="progress-bar" id="bar-noite-af"></div></div>
+    <span class="progress-text" id="txt-noite-af">0/0</span>
   </div>
-  <div class="destaque">Rotina Noturna (AF ou Ácidos)</div>
-  <div id="steps-noite"></div>
-  <button class="reset-btn" onclick="resetTab('noite')">Resetar Checklist</button>
+  <div class="destaque">⚡ 1 dia sim, 1 dia não · Nunca com ácidos</div>
+  <div id="steps-noite-af"></div>
+  <button class="reset-btn" onclick="resetTab('noite-af')">↺ Resetar Checklist</button>
+</div>
+
+<div class="content" id="tab-noite-ac">
+  <div class="progress-wrap">
+    <div class="progress-bar-bg"><div class="progress-bar" id="bar-noite-ac"></div></div>
+    <span class="progress-text" id="txt-noite-ac">0/0</span>
+  </div>
+  <div class="destaque">✦ Somente nos dias sem Alta Frequência</div>
+  <div id="steps-noite-ac"></div>
+  <div class="aviso">⚠️ Nunca use Alta Frequência e Ácidos na mesma noite.</div>
+  <button class="reset-btn" onclick="resetTab('noite-ac')">↺ Resetar Checklist</button>
 </div>
 
 <div class="content" id="tab-virilha">
@@ -103,57 +113,63 @@
     <div class="progress-bar-bg"><div class="progress-bar" id="bar-virilha"></div></div>
     <span class="progress-text" id="txt-virilha">0/0</span>
   </div>
-  <div class="destaque">Cuidados Específicos Virilha</div>
   <div id="steps-virilha"></div>
-  <button class="reset-btn" onclick="resetTab('virilha')">Resetar Checklist</button>
+  <div class="aviso">🚫 Creme depilatório PROIBIDO nesta região.</div>
+  <button class="reset-btn" onclick="resetTab('virilha')">↺ Resetar Checklist</button>
 </div>
 
 <div class="content" id="tab-peeling">
+  <div class="destaque">✦ A cada 15 dias · Pausar rotina normal</div>
   <div id="steps-peeling"></div>
-  <button class="reset-btn" onclick="resetTab('peeling')">Resetar</button>
-</div>
-
-<div class="content" id="tab-semanal">
-  <div id="steps-semanal"></div>
-  <button class="reset-btn" onclick="resetTab('semanal')">Resetar</button>
+  <button class="reset-btn" onclick="resetTab('peeling')">↺ Resetar Checklist</button>
 </div>
 
 <script>
-// Dados Iniciais (Caso o LocalStorage esteja vazio)
+// Base de dados completa com as divisões restauradas
 const defaultData = {
   manha: [
-    { title: "Limpeza de rosto", desc: "Mousse Anti-Oleosidade no rosto", done: false },
-    { title: "Gel Anti-Oleosidade", desc: "Camada fina no rosto (1ª aplicação)", done: false },
-    { title: "Sérum Secativo", desc: "Movimentos circulares (1ª aplicação)", done: false },
-    { title: "Protetor Solar", desc: "Obrigatório antes de sair", done: false }
+    { title: "Limpeza do rosto", desc: "Mousse Anti-Oleosidade Lady Beauty", done: false },
+    { title: "Gel Anti-Oleosidade", desc: "No rosto — leave-on (1ª aplicação)", done: false },
+    { title: "Sérum Secativo", desc: "No rosto — circular (1ª aplicação)", done: false },
+    { title: "Protetor Solar", desc: "Obrigatório — antes da maquiagem", done: false }
   ],
-  noite: [
+  "noite-af": [
     { title: "Remover Maquiagem", desc: "Água micelar ou lenço", done: false },
     { title: "Limpeza", desc: "Mousse Anti-Oleosidade", done: false },
-    { title: "Gel Anti-Oleosidade", desc: "2ª aplicação do dia", done: false },
+    { title: "Alta Frequência ⚡", desc: "3-5 min no rosto / 5 min couro cabeludo", done: false },
+    { title: "Gel Anti-Oleosidade", desc: "Após AF — 2ª aplicação", done: false },
+    { title: "Sérum Secativo", desc: "Sobre o gel — 3ª aplicação", done: false },
+    { title: "Hidratante", desc: "Avon Care Face — Finalização", done: false }
+  ],
+  "noite-ac": [
+    { title: "Remover Maquiagem", desc: "Pele limpa e seca", done: false },
+    { title: "Tranexâmico Creamy", desc: "Aguardar absorção completa", done: false },
+    { title: "Mandélico Creamy", desc: "Sobre o tranexâmico", done: false },
+    { title: "Gel Anti-Oleosidade", desc: "Após os ácidos absorverem", done: false },
+    { title: "Sérum Secativo", desc: "Pontual ou área afetada", done: false },
     { title: "Hidratante", desc: "Avon Care Face", done: false }
   ],
   virilha: [
     { title: "Sabonete Salicílico", desc: "No banho das 12:00", done: false },
-    { title: "Gel Anti-Oleosidade", desc: "Leave-on na região", done: false },
-    { title: "Sérum Secativo", desc: "Aplicação na virilha", done: false },
-    { title: "Hidratante Corporal", desc: "Finalização", done: false }
+    { title: "Gel Anti-Oleosidade", desc: "Camada fina — leave-on", done: false },
+    { title: "Sérum Secativo", desc: "1ª aplicação do dia", done: false },
+    { title: "Sérum Secativo (Noite)", desc: "3ª aplicação do dia", done: false },
+    { title: "Hidratante Corporal", desc: "Aguardar 5 min após ativos", done: false },
+    { title: "Esfoliante Salicílico", desc: "Dermachem (2-3x na semana)", done: false }
   ],
   peeling: [
-    { title: "Retinóico", desc: "Aguardar 8 minutos e retirar", done: false },
-    { title: "TCA 35%", desc: "Aguardar 8 horas", done: false }
-  ],
-  semanal: [
-    { title: "Esfoliante Salicílico", desc: "2-3x por semana (Noite)", done: false },
-    { title: "IPL Laser", desc: "1x por semana", done: false }
+    { title: "Retinóico (Rosto)", desc: "Aguardar 8 minutos e retirar", done: false },
+    { title: "TCA 35% (Rosto)", desc: "Aguardar 8 horas e retirar", done: false },
+    { title: "TCA 35% (Virilha)", desc: "Aplicação Dia 1 (8h)", done: false },
+    { title: "TCA 35% (Virilha)", desc: "Aplicação Dia 2 (8h)", done: false }
   ]
 };
 
-let appData = JSON.parse(localStorage.getItem('skincareData')) || defaultData;
+let appData = JSON.parse(localStorage.getItem('skincareDataV2')) || defaultData;
 let isEditMode = false;
 
 function saveToStorage() {
-  localStorage.setItem('skincareData', JSON.stringify(appData));
+  localStorage.setItem('skincareDataV2', JSON.stringify(appData));
 }
 
 function renderSteps() {
@@ -205,6 +221,10 @@ function updateProgress(tabId) {
 }
 
 function showTab(id, el) {
+  if (id === 'semanal') {
+    toggleEdit();
+    return;
+  }
   document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   document.getElementById('tab-' + id).classList.add('active');
@@ -214,23 +234,23 @@ function showTab(id, el) {
 function toggleEdit() {
   isEditMode = !isEditMode;
   document.body.classList.toggle('edit-mode');
-  const btn = document.querySelector('.tab:last-child');
-  btn.innerHTML = isEditMode ? "💾 Salvar" : "⚙️ Edit";
+  const editTab = document.querySelector('.tab:last-child');
+  editTab.innerHTML = isEditMode ? "💾 Salvar" : "⚙️ Configuração";
+  
   if(!isEditMode) {
-    alert("Alterações de produtos salvas com sucesso!");
+    alert("Produtos e rituais salvos!");
   }
   renderSteps();
 }
 
 function resetTab(tabId) {
-  if(confirm("Deseja desmarcar todos os itens desta lista?")) {
+  if(confirm("Zerar progresso desta aba?")) {
     appData[tabId].forEach(s => s.done = false);
     saveToStorage();
     renderSteps();
   }
 }
 
-// Inicialização
 renderSteps();
 </script>
 
