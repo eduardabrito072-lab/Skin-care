@@ -1,4 +1,4 @@
-# ✦ Skincare Ritual Pro
+# ✦ Skincare Ritual 
 
 **Skincare Ritual Pro** é uma aplicação web progressiva e minimalista projetada para organizar rotinas de cuidados com a pele de forma prática e sofisticada. Com um design focado na experiência do usuário e inspirado em estética editorial, o app ajuda a manter a constância nos tratamentos faciais e corporais.
 
