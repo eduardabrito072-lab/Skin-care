@@ -14,7 +14,7 @@
   --terracota-med:#C49A8A;
   --terracota-clr:#E8D0C8;
   --bege-quente:#EDE0D8;
-  --bege-suave:#F2E9E1; /* Restaurada a cor de fundo original */
+  --bege-suave:#F2E9E1; /* Cor de fundo original restaurada */
   --marrom:#5C3D2E;
   --border-color:#E6DED8; /* Cor das bordas suaves */
 }
@@ -42,7 +42,7 @@ body{
   color: var(--terracota-med);
 }
 
-.header p {
+.header-note {
   background: white;
   padding: 10px 20px;
   border-radius: 20px;
@@ -53,12 +53,15 @@ body{
   margin: 0;
 }
 
-/* Tabs */
-.tabs{
+/* Tabs - Restauradas em duas linhas como na imagem 3 */
+.tabs-container {
+    background: white;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tabs-row {
   display:grid;
-  grid-template-columns:repeat(4,1fr);
-  background:white; /* Tabs em fundo branco suave */
-  border-bottom: 1px solid var(--border-color);
+  grid-template-columns:repeat(3,1fr);
 }
 
 .tab{
@@ -129,13 +132,16 @@ body{
   position: relative;
 }
 
-.step:after {
-    content: '→';
-    position: absolute;
-    right: 20px;
-    color: var(--terracota-med);
-    font-size: 18px;
-    opacity: 0.5;
+/* Círculo do Checkbox (Falso, apenas visual) */
+.step:before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #E6DED8;
+    border-radius: 50%;
+    margin-right: 15px;
+    flex-shrink: 0;
 }
 
 .step.done{
@@ -144,6 +150,12 @@ body{
 
 .step.done .step-title {
     text-decoration:line-through;
+}
+
+/* Estilo do check visual */
+.step.done:before {
+    background-color: var(--terracota-clr);
+    border-color: var(--terracota-clr);
 }
 
 .step-text-container {
@@ -164,6 +176,10 @@ body{
 }
 
 /* Tags de Aplicação */
+.step-tags-container {
+    margin-top: 5px;
+}
+
 .step-tag {
     background: #F4EAE4;
     color: #8C6F61;
@@ -291,7 +307,7 @@ body{
 
 <div class="header">
 <h1>Skincare Ritual</h1>
-<p id="topText">Banho ~12h · rápida antes de sair ✨</p>
+<div class="header-note" id="topText">Banho ~12h · rápida antes de sair ✨</div>
 </div>
 
 <div class="progress-container">
@@ -299,109 +315,204 @@ body{
     <div class="progress-text" id="pText">0/5</div>
 </div>
 
-<div class="tabs">
-<div class="tab active" onclick="showTab('manha',this)">☀️ Manhã</div>
-<div class="tab" onclick="showTab('virilha',this)">✿ Virilha</div>
-<div class="tab" onclick="showTab('noite',this)">🌙 Noite</div>
-<div class="tab" onclick="showTab('config',this)">⚙️ Config</div>
+<div class="tabs-container">
+    <div class="tabs-row">
+        <div class="tab active" onclick="showTab('manha',this)">☀️ Manhã</div>
+        <div class="tab" onclick="showTab('noite_af',this)">⚡ Noite AF</div>
+        <div class="tab" onclick="showTab('noite_ac',this)">✦ Noite Ácidos</div>
+    </div>
+    <div class="tabs-row">
+        <div class="tab" onclick="showTab('virilha',this)">✿ Virilha</div>
+        <div class="tab" onclick="showTab('peeling',this)">✨ Peeling</div>
+        <div class="tab" onclick="showTab('config',this)">⚙️ Config</div>
+    </div>
 </div>
 
 <div class="content active" id="tab-manha">
-
     <div class="section-divider"><span>🚿 BANHO</span></div>
     <div class="step" onclick="toggle(this)">
         <div class="step-text-container">
-            <span class="step-title" id="p1t">Limpeza no banho</span>
-            <span class="step-detail" id="p1d">Mousse Anti-Oleosidade no rosto.</span>
+            <span class="step-title" id="m_p1t">Limpeza no banho</span>
+            <span class="step-detail" id="m_p1d">Mousse Anti-Oleosidade no rosto.</span>
         </div>
     </div>
 
     <div class="section-divider"><span>✨ ROSTO</span></div>
     <div class="step" onclick="toggle(this)">
         <div class="step-text-container">
-            <span class="step-title" id="p2t">Gel Anti-Oleosidade</span>
-            <span class="step-detail" id="p2d">Camada fina – leave-on, não enxágue.</span>
-            <div><span class="step-tag">2x ao dia – 1ª aplicação</span></div>
+            <span class="step-title" id="m_p2t">Gel Anti-Oleosidade</span>
+            <span class="step-detail" id="m_p2d">Camada fina – leave-on, não enxágue.</span>
+            <div class="step-tags-container"><span class="step-tag">2x ao dia – 1ª aplicação</span></div>
         </div>
     </div>
-    
     <div class="step" onclick="toggle(this)">
         <div class="step-text-container">
-            <span class="step-title" id="p3t">Sérum Secativo ✦</span>
-            <span class="step-detail" id="p3d">Movimentos circulares sobre o gel.</span>
-            <div><span class="step-tag">3x ao dia – 1ª aplicação</span></div>
+            <span class="step-title" id="m_p3t">Sérum Secativo ✦</span>
+            <span class="step-detail" id="m_p3d">Movimentos circulares sobre o gel.</span>
+            <div class="step-tags-container"><span class="step-tag">3x ao dia – 1ª aplicação</span></div>
         </div>
     </div>
 
     <div class="section-divider"><span>☀️ FINALIZAÇÃO</span></div>
     <div class="step" onclick="toggle(this)">
         <div class="step-text-container">
-            <span class="step-title" id="p4t">Protetor Solar ☀️</span>
-            <span class="step-detail" id="p4d">Obrigatório – antes da maquiagem.</span>
+            <span class="step-title" id="m_p4t">Protetor Solar ☀️</span>
+            <span class="step-detail" id="m_p4d">Obrigatório – antes da maquiagem.</span>
+        </div>
+    </div>
+</div>
+
+<div class="content" id="tab-noite_af">
+    <div class="header-note">⚡ 1 dia sim · 1 dia não — nunca com ácidos</div>
+    
+    <div class="section-divider"><span>🧼 LIMPEZA</span></div>
+    <div class="step" onclick="toggle(this)">
+        <div class="step-text-container">
+            <span class="step-title">Remove maquiagem</span>
+            <span class="step-detail">Lenço umedecido ou água micelar.</span>
+        </div>
+    </div>
+    <div class="step" onclick="toggle(this)">
+        <div class="step-text-container">
+            <span class="step-title">Mousse Anti-Oleosidade</span>
+            <span class="step-detail">Limpeza do rosto — enxágue bem.</span>
         </div>
     </div>
 
+    <div class="section-divider"><span>✨ TRATAMENTO</span></div>
+    <div class="step" onclick="toggle(this)">
+        <div class="step-text-container">
+            <span class="step-title">Alta Frequência ⚡</span>
+            <span class="step-detail">3-5 min no rosto, circulares. Couro cabeludo: 5 min lineares (opcional).</span>
+        </div>
+    </div>
+    <div class="step" onclick="toggle(this)">
+        <div class="step-text-container">
+            <span class="step-title">Gel Anti-Oleosidade</span>
+            <span class="step-detail">Após a alta frequência — leave-on.</span>
+            <div class="step-tags-container"><span class="step-tag">2x ao dia – 2ª aplicação</span></div>
+        </div>
+    </div>
+    <div class="step" onclick="toggle(this)">
+        <div class="step-text-container">
+            <span class="step-title">Sérum Secativo ✦</span>
+            <div class="step-tags-container"><span class="step-tag">3x ao dia – 3ª aplicação</span></div>
+        </div>
+    </div>
+</div>
+
+<div class="content" id="tab-noite_ac">
+    <div class="header-note">✦ Só quando não for dia de alta frequência</div>
+    
+    <div class="section-divider"><span>🧼 LIMPEZA</span></div>
+    <div class="step" onclick="toggle(this)">Remove maquiagem</div>
+    <div class="step" onclick="toggle(this)">Limpeza profunda</div>
+
+    <div class="section-divider"><span>✨ TRATAMENTO</span></div>
+    <div class="step" onclick="toggle(this)">Ácido Glicólico / Retinóico</div>
+    <div class="step" onclick="toggle(this)">Hidratante reparador</div>
 </div>
 
 <div class="content" id="tab-virilha">
-    <div class="section-divider"><span>Tratamento</span></div>
-    <div class="step" onclick="toggle(this)">Sabonete salicílico</div>
-    <div class="step" onclick="toggle(this)">Gel clareador</div>
-    <div class="step" onclick="toggle(this)">Sérum</div>
+    <div class="section-divider"><span>☀️ MANHÃ</span></div>
+    <div class="step" onclick="toggle(this)">
+        <div class="step-text-container">
+            <span class="step-title">Sabonete Salicílico</span>
+            <span class="step-detail">No banho — 2x ao dia.</span>
+        </div>
+    </div>
+    <div class="step" onclick="toggle(this)">
+        <div class="step-text-container">
+            <span class="step-title">Gel Anti-Oleosidade</span>
+            <span class="step-detail">Camada fina — leave-on.</span>
+        </div>
+    </div>
+    <div class="step" onclick="toggle(this)">
+        <div class="step-text-container">
+            <span class="step-title">Sérum Secativo ✦ — 1ª vez</span>
+            <span class="step-detail">3x ao dia na virilha.</span>
+        </div>
+    </div>
+
+    <div class="section-divider"><span>🌙 NOITE</span></div>
+    <div class="step" onclick="toggle(this)">
+        <div class="step-text-container">
+            <span class="step-title">Sabonete Salicílico + Gel</span>
+            <span class="step-detail">Banho noturno — sabonete + gel leave-on.</span>
+        </div>
+    </div>
+    <div class="step" onclick="toggle(this)">
+        <div class="step-text-container">
+            <span class="step-title">Sérum Secativo ✦ — 3ª vez</span>
+            <span class="step-detail">Última aplicação do dia.</span>
+        </div>
+    </div>
+    <div class="step" onclick="toggle(this)">
+        <div class="step-text-container">
+            <span class="step-title">Hidratante corporal</span>
+        </div>
+    </div>
 </div>
 
-<div class="content" id="tab-noite">
-    <div class="section-divider"><span>Rotina Noturna</span></div>
-    <div class="step" onclick="toggle(this)">Remover maquiagem</div>
-    <div class="step" onclick="toggle(this)">Limpeza profunda</div>
-    <div class="step" onclick="toggle(this)">Hidratante</div>
+<div class="content" id="tab-peeling">
+    <div class="header-note">A cada 15 dias — rosto e virilha no mesmo dia</div>
+    
+    <div class="section-divider"><span>✨ ROSTO</span></div>
+    <div class="step" onclick="toggle(this)">
+        <div class="step-text-container">
+            <span class="step-title">Retinóico — 8 minutos</span>
+            <span class="step-detail">Aplique, aguarde e retire.</span>
+        </div>
+    </div>
+    <div class="step" onclick="toggle(this)">
+        <div class="step-text-container">
+            <span class="step-title">TCA 35% — 8 horas</span>
+            <span class="step-detail">Aguarde e retire.</span>
+        </div>
+    </div>
+    <div class="step" onclick="toggle(this)">
+        <div class="step-text-container">
+            <span class="step-title">TCA 35% — dia seguinte (8h)</span>
+            <span class="step-detail">Repete só o TCA.</span>
+        </div>
+    </div>
+
+    <div class="section-divider"><span>✿ VIRILHA</span></div>
+    <div class="step" onclick="toggle(this)">
+        <div class="step-text-container">
+            <span class="step-title">TCA 35% — dia 1 (8h)</span>
+            <span class="step-detail">Com orientação da sua profissional.</span>
+        </div>
+    </div>
+    <div class="step" onclick="toggle(this)">
+        <div class="step-text-container">
+            <span class="step-title">TCA 35% — dia 2 (8h)</span>
+            <span class="step-detail">Repete mais 8 horas.</span>
+        </div>
+    </div>
+
+    <div class="config-card">
+        <span class="step-detail" style="color:#B29D91;">⚠️ Na semana do peeling: para tudo. Só hidratante + protetor. Volta após descamação (5-7 dias). IPL: espera mínimo 7 dias.</span>
+    </div>
 </div>
 
 <div class="content" id="tab-config">
-
     <div class="config-card">
         <span class="config-title">⏰ HORÁRIOS</span>
-        
         <label class="label-image">Manhã – horário / nota</label>
         <input type="text" id="cfg_top" class="input-image" placeholder="Banho ~12h · rápida antes de sair ✨">
-        
-        <label class="label-image">Noite AF – nota</label>
-        <input type="text" id="cfg_night_af" class="input-image" placeholder="⚡ 1 dia sim · 1 dia não — nunca com ácidos">
-        
-        <label class="label-image">Noite Ácidos – nota</label>
-        <input type="text" id="cfg_night_ac" class="input-image" placeholder="✦ Só quando não for dia de alta frequência">
     </div>
 
     <div class="config-card">
         <span class="config-title">☀️ MANHÃ</span>
-        
         <label class="label-image">Passo 1 – título</label>
-        <input type="text" id="cfg_p1t" class="input-image" value="Limpeza no banho">
-        
+        <input type="text" id="cfg_m_p1t" class="input-image" value="Limpeza no banho">
         <label class="label-image">Passo 1 – detalhe</label>
-        <input type="text" id="cfg_p1d" class="input-image" value="Mousse Anti-Oleosidade no rosto.">
-
-        <label class="label-image">Passo 2 – título</label>
-        <input type="text" id="cfg_p2t" class="input-image" value="Gel Anti-Oleosidade">
-    </div>
-
-    <div class="config-card">
-        <label class="label-image">Passo 4 – título</label>
-        <input type="text" id="cfg_p4t" class="input-image" value="TCA 35% — dia 1 (8h)">
-        
-        <label class="label-image">Passo 4 – detalhe</label>
-        <input type="text" id="cfg_p4d" class="input-image" value="Com orientação da sua profissional.">
-        
-        <label class="label-image">Passo 5 – título</label>
-        <input type="text" id="cfg_p5t" class="input-image" value="TCA 35% — dia 2 (8h)">
-        
-        <label class="label-image">Passo 5 – detalhe</label>
-        <input type="text" id="cfg_p5d" class="input-image" value="Repete mais 8 horas.">
+        <input type="text" id="cfg_m_p1d" class="input-image" value="Mousse Anti-Oleosidade no rosto.">
     </div>
 
     <button class="btn-save" onclick="salvar()">✓ Salvar configurações</button>
     <button class="btn-restore" onclick="restaurar()">↺ Restaurar padrões</button>
-
 </div>
 
 <script>
@@ -411,6 +522,7 @@ function showTab(id,el){
     document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
     document.getElementById('tab-'+id).classList.add('active');
     el.classList.add('active');
+    updateProgress(); // Atualiza o progresso da aba ativa
 }
 
 function toggle(el){
@@ -418,11 +530,19 @@ function toggle(el){
     updateProgress();
 }
 
-// Lógica de Barra de Progresso
+// Lógica de Barra de Progresso (dinâmica para a aba ativa)
 function updateProgress() {
-    let steps = document.querySelectorAll('#tab-manha .step');
-    let doneSteps = document.querySelectorAll('#tab-manha .step.done');
+    let activeContent = document.querySelector('.content.active');
+    let steps = activeContent.querySelectorAll('.step');
+    let doneSteps = activeContent.querySelectorAll('.step.done');
     let total = steps.length;
+    
+    if (total === 0) {
+        document.getElementById('pFill').style.width = '0%';
+        document.getElementById('pText').innerText = '0/0';
+        return;
+    }
+
     let done = doneSteps.length;
     let percentage = (done / total) * 100;
     
@@ -432,16 +552,13 @@ function updateProgress() {
 
 // Lógica de Configurações
 function salvar(){
-    // Salva o texto do topo
     let topText = document.getElementById('cfg_top').value;
     if(topText) {
         localStorage.setItem('cfg_top_text', topText);
-        document.getElementById('topText').innerText = topText;
     }
     
-    // Salva os títulos e detalhes (exemplo passo 1)
-    localStorage.setItem('cfg_p1t', document.getElementById('cfg_p1t').value);
-    localStorage.setItem('cfg_p1d', document.getElementById('cfg_p1d').value);
+    localStorage.setItem('cfg_m_p1t', document.getElementById('cfg_m_p1t').value);
+    localStorage.setItem('cfg_m_p1d', document.getElementById('cfg_m_p1d').value);
     
     aplicarConfig();
     alert("Configurações salvas!");
@@ -461,18 +578,23 @@ function aplicarConfig(){
         document.getElementById('cfg_top').value = topText;
     }
 
-    // Carrega textos customizados se houver
-    let p1t = localStorage.getItem('cfg_p1t');
-    if(p1t) document.getElementById('p1t').innerText = p1t;
-    let p1d = localStorage.getItem('cfg_p1d');
-    if(p1d) document.getElementById('p1d').innerText = p1d;
-    // ... adicione para outros campos se salvar
+    // Exemplo de carregamento para Manhã Passo 1
+    let m_p1t = localStorage.getItem('cfg_m_p1t');
+    if(m_p1t) {
+        document.getElementById('m_p1t').innerText = m_p1t;
+        document.getElementById('cfg_m_p1t').value = m_p1t;
+    }
+    let m_p1d = localStorage.getItem('cfg_m_p1d');
+    if(m_p1d) {
+        document.getElementById('m_p1d').innerText = m_p1d;
+        document.getElementById('cfg_m_p1d').value = m_p1d;
+    }
 }
 
 // Inicialização
 window.onload = function() {
     aplicarConfig();
-    updateProgress();
+    updateProgress(); // Progresso inicial da aba Manhã
 };
 </script>
 
