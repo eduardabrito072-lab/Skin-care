@@ -1,9 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Skincare Ritual</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Lora&family=Cormorant+Garamond&display=swap" rel="stylesheet">
 
 <style>
@@ -14,14 +17,13 @@
   --bege-quente:#EDE0D8;
   --bege-suave:#FAF5F2;
   --marrom:#5C3D2E;
-  --bg-input: #FCF8F6;
+  --bg-input: #FCF8F6; /* Cor de fundo dos campos da imagem */
 }
 
 body{
-  font-family:'Lora', serif;
+  font-family:'Lora',serif;
   background:var(--bege-suave);
   margin:0;
-  color: var(--marrom);
 }
 
 .header{
@@ -31,80 +33,37 @@ body{
 
 .tabs{
   display:grid;
-  grid-template-columns:repeat(4, 1fr);
+  grid-template-columns:repeat(4,1fr);
   background:var(--bege-quente);
 }
 
 .tab{
   text-align:center;
-  padding:15px 10px;
+  padding:10px;
   cursor:pointer;
   font-size:12px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
 }
 
 .tab.active{
   color:var(--terracota);
   font-weight:bold;
-  border-bottom: 2px solid var(--terracota);
 }
 
 .content{
   display:none;
   padding:20px;
-  max-width: 600px;
-  margin: 0 auto;
 }
 
 .content.active{
   display:block;
 }
 
-/* Estilo dos Cards de Configuração */
-.config-group {
-    background: #F4EAE4; /* Cor de fundo do card maior */
-    padding: 20px;
-    border-radius: 20px;
-    margin-bottom: 20px;
-}
-
-.config-title {
-    font-family: 'Cormorant Garamond', serif;
-    text-transform: uppercase;
-    font-size: 14px;
-    letter-spacing: 2px;
-    margin-bottom: 15px;
-    display: block;
-}
-
-.field-label {
-    font-size: 11px;
-    color: var(--terracota-med);
-    margin-bottom: 5px;
-    display: block;
-    font-style: italic;
-}
-
-.input-box {
-    background: var(--bg-input);
-    border: 1px solid var(--terracota-clr);
-    border-radius: 12px;
-    padding: 12px 15px;
-    margin-bottom: 15px;
-    width: 100%;
-    box-sizing: border-box;
-    font-family: 'Lora', serif;
-    color: var(--marrom);
-}
-
 .step{
   background:white;
-  padding:15px;
+  padding:12px;
   margin:10px 0;
-  border-radius:12px;
+  border-radius:10px;
   cursor:pointer;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.02);
 }
 
 .step.done{
@@ -112,148 +71,190 @@ body{
   opacity:0.6;
 }
 
-.btn-salvar {
-    background: var(--terracota);
+/* --- ESTILOS NOVOS DA ABA CONFIG (IGUAL À IMAGEM) --- */
+
+.config-container {
+    background: #F4EAE4;
+    padding: 20px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.config-header {
+    font-family: 'Cormorant Garamond', serif;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: var(--terracota-med);
+    margin-bottom: 15px;
+    display: block;
+}
+
+.label-image {
+    font-size: 11px;
+    color: var(--terracota-med);
+    margin-bottom: 5px;
+    display: block;
+    font-style: italic;
+}
+
+.input-image {
+    width: 100%;
+    background: var(--bg-input);
+    border: 1px solid #EEDCD5;
+    border-radius: 15px;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    font-family: 'Lora', serif;
+    color: var(--marrom);
+}
+
+.btn-salvar-img {
+    background: #A67C6D;
     color: white;
     border: none;
-    padding: 12px 30px;
+    padding: 12px 25px;
     border-radius: 25px;
     cursor: pointer;
     display: block;
-    margin: 20px auto;
+    margin: 10px auto;
     font-family: 'Lora', serif;
+    font-size: 14px;
 }
 
-.btn-restaurar {
+.btn-restaurar-img {
     background: none;
-    border: 1px solid var(--terracota-clr);
-    color: var(--terracota);
-    padding: 8px 20px;
-    border-radius: 25px;
-    display: block;
-    margin: 10px auto;
+    border: none;
+    color: #4A69BD; /* Azul conforme a imagem */
+    text-decoration: underline;
     font-size: 12px;
+    display: block;
+    margin: 0 auto;
+    cursor: pointer;
 }
+
 </style>
 </head>
 
 <body>
 
 <div class="header">
-    <h1>Skincare Ritual</h1>
-    <p id="textoManha">Banho ~12h · rápida antes de sair ✨</p>
+<h1>Skincare Ritual</h1>
+<p id="textoManha">Banho ~12h · rápida antes de sair ✨</p>
 </div>
 
 <div class="tabs">
-    <div class="tab active" onclick="showTab('manha',this)">☀️ Manhã</div>
-    <div class="tab" onclick="showTab('virilha',this)">✿ Virilha</div>
-    <div class="tab" onclick="showTab('noite',this)">🌙 Noite</div>
-    <div class="tab" onclick="showTab('config',this)">⚙️ Config</div>
+<div class="tab active" onclick="showTab('manha',this)">☀️ Manhã</div>
+<div class="tab" onclick="showTab('virilha',this)">✿ Virilha</div>
+<div class="tab" onclick="showTab('noite',this)">🌙 Noite</div>
+<div class="tab" onclick="showTab('config',this)">⚙️ Config</div>
 </div>
 
 <div class="content active" id="tab-manha">
-    <div class="step" onclick="toggle(this)">Mousse Anti-Oleosidade no rosto.</div>
-    <div class="step" onclick="toggle(this)">Gel Anti-Oleosidade</div>
-    <div class="step" onclick="toggle(this)">Sérum</div>
-    <div class="step" onclick="toggle(this)">Protetor solar</div>
+<div class="step" onclick="toggle(this)">Limpeza no banho</div>
+<div class="step" onclick="toggle(this)">Gel Anti-Oleosidade</div>
+<div class="step" onclick="toggle(this)">Sérum</div>
+<div class="step" onclick="toggle(this)">Protetor solar</div>
 </div>
 
 <div class="content" id="tab-virilha">
-    <div class="step" onclick="toggle(this)">Sabonete salicílico</div>
-    <div class="step" onclick="toggle(this)">Gel</div>
-    <div class="step" onclick="toggle(this)">Sérum</div>
+<div class="step" onclick="toggle(this)">Sabonete salicílico</div>
+<div class="step" onclick="toggle(this)">Gel</div>
+<div class="step" onclick="toggle(this)">Sérum</div>
 </div>
 
 <div class="content" id="tab-noite">
-    <div class="step" onclick="toggle(this)">Remover maquiagem</div>
-    <div class="step" onclick="toggle(this)">Limpeza</div>
-    <div class="step" onclick="toggle(this)">Hidratante</div>
+<div class="step" onclick="toggle(this)">Remover maquiagem</div>
+<div class="step" onclick="toggle(this)">Limpeza</div>
+<div class="step" onclick="toggle(this)">Hidratante</div>
 </div>
 
 <div class="content" id="tab-config">
-    
-    <div class="config-group">
-        <span class="config-title">⏰ Horários</span>
+
+    <div class="config-container">
+        <span class="config-header">⏰ HORÁRIOS</span>
         
-        <label class="field-label">Manhã - horário / nota</label>
-        <input type="text" id="cfg_horario" class="input-box" placeholder="Banho ~12h · rápida antes de sair ✨">
+        <label class="label-image">Manhã – horário / nota</label>
+        <input type="text" id="cfg_h1" class="input-image" placeholder="Banho ~12h · rápida antes de sair ✨">
         
-        <label class="field-label">Noite AF - nota</label>
-        <input type="text" id="cfg_noite_af" class="input-box" placeholder="⚡ 1 dia sim · 1 dia não — nunca com ácidos">
+        <label class="label-image">Noite AF – nota</label>
+        <input type="text" id="cfg_h2" class="input-image" placeholder="⚡ 1 dia sim · 1 dia não — nunca com ácidos">
         
-        <label class="field-label">Noite Ácidos - nota</label>
-        <input type="text" id="cfg_noite_ac" class="input-box" placeholder="✦ Só quando não for dia de alta frequência">
+        <label class="label-image">Noite Ácidos – nota</label>
+        <input type="text" id="cfg_h3" class="input-image" placeholder="✦ Só quando não for dia de alta frequência">
     </div>
 
-    <div class="config-group">
-        <span class="config-title">☀️ Manhã</span>
+    <div class="config-container">
+        <span class="config-header">☀️ MANHÃ</span>
         
-        <label class="field-label">Passo 1 - título</label>
-        <input type="text" id="cfg_p1_tit" class="input-box" value="Limpeza no banho">
+        <label class="label-image">Passo 1 – título</label>
+        <input type="text" id="cfg_p1t" class="input-image" value="Limpeza no banho">
         
-        <label class="field-label">Passo 1 - detalhe</label>
-        <input type="text" id="cfg_p1_det" class="input-box" value="Mousse Anti-Oleosidade no rosto.">
-
-        <label class="field-label">Passo 2 - título</label>
-        <input type="text" id="cfg_p2_tit" class="input-box" value="Gel Anti-Oleosidade">
+        <label class="label-image">Passo 1 – detalhe</label>
+        <input type="text" id="cfg_p1d" class="input-image" value="Mousse Anti-Oleosidade no rosto.">
     </div>
 
-    <div class="config-group">
-        <label class="field-label">Passo 4 - título</label>
-        <input type="text" id="cfg_p4_tit" class="input-box" value="TCA 35% — dia 1 (8h)">
+    <div class="config-container">
+        <label class="label-image">Passo 4 – título</label>
+        <input type="text" id="cfg_p4t" class="input-image" value="TCA 35% — dia 1 (8h)">
         
-        <label class="field-label">Passo 4 - detalhe</label>
-        <input type="text" id="cfg_p4_det" class="input-box" value="Com orientação da sua profissional.">
-
-        <label class="field-label">Passo 5 - título</label>
-        <input type="text" id="cfg_p5_tit" class="input-box" value="TCA 35% — dia 2 (8h)">
+        <label class="label-image">Passo 4 – detalhe</label>
+        <input type="text" id="cfg_p4d" class="input-image" value="Com orientação da sua profissional.">
         
-        <label class="field-label">Passo 5 - detalhe</label>
-        <input type="text" id="cfg_p5_det" class="input-box" value="Repete mais 8 horas.">
+        <label class="label-image">Passo 5 – título</label>
+        <input type="text" id="cfg_p5t" class="input-image" value="TCA 35% — dia 2 (8h)">
+        
+        <label class="label-image">Passo 5 – detalhe</label>
+        <input type="text" id="cfg_p5d" class="input-image" value="Repete mais 8 horas.">
     </div>
 
-    <button class="btn-salvar" onclick="salvar()">✓ Salvar configurações</button>
-    <button class="btn-restaurar" onclick="restaurar()">↺ Restaurar padrões</button>
+    <button class="btn-salvar-img" onclick="salvar()">✓ Salvar configurações</button>
+    <button class="btn-restaurar-img" onclick="restaurar()">↺ Restaurar padrões</button>
 
 </div>
 
 <script>
-function showTab(id, el){
-    document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    document.getElementById('tab-' + id).classList.add('active');
-    el.classList.add('active');
+
+function showTab(id,el){
+document.querySelectorAll('.content').forEach(c=>c.classList.remove('active'));
+document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+
+document.getElementById('tab-'+id).classList.add('active');
+el.classList.add('active');
 }
 
 function toggle(el){
-    el.classList.toggle('done');
+el.classList.toggle('done');
 }
 
 function salvar(){
-    // Salva o texto do topo
-    let horario = document.getElementById('cfg_horario').value;
-    if(horario) {
-        localStorage.setItem('cfg_horario', horario);
-        document.getElementById('textoManha').innerText = horario;
+    let h1 = document.getElementById('cfg_h1').value;
+    if(h1) {
+        localStorage.setItem('horario_principal', h1);
+        document.getElementById('textoManha').innerText = h1;
     }
-    alert("Configurações salvas com sucesso!");
+    // Adicione aqui lógica para salvar os outros campos se desejar
+    alert("Configurações salvas!");
 }
 
 function restaurar(){
-    if(confirm("Deseja restaurar os padrões?")){
+    if(confirm("Restaurar padrões?")){
         localStorage.clear();
         location.reload();
     }
 }
 
-// Carregar ao abrir
-window.onload = function() {
-    let h = localStorage.getItem('cfg_horario');
-    if(h) {
-        document.getElementById('textoManha').innerText = h;
-        document.getElementById('cfg_horario').value = h;
+function carregar(){
+    let h1 = localStorage.getItem('horario_principal');
+    if(h1){
+        document.getElementById('textoManha').innerText = h1;
+        document.getElementById('cfg_h1').value = h1;
     }
-};
+}
+
+window.onload = carregar;
+
 </script>
 
 </body>
