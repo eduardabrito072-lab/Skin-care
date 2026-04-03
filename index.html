@@ -22,77 +22,51 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { background: var(--bege-suave); font-family: 'Lora', serif; color: var(--marrom-escuro); min-height: 100vh; padding-bottom: 48px; }
 
+  /* Header e Tabs originais */
   .header { background: linear-gradient(160deg, var(--bege-quente) 0%, var(--terracota-clr) 100%); padding: 32px 20px 24px; text-align: center; }
   .orn { font-family: 'Cormorant Garamond', serif; color: var(--terracota-med); font-size: 16px; letter-spacing: 6px; margin-bottom: 8px; }
   .header h1 { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 300; color: var(--marrom-escuro); letter-spacing: 2px; }
   .header p { font-style: italic; font-size: 12px; color: var(--terracota); margin-top: 8px; }
   .header-line { width: 60px; height: 1px; background: var(--terracota-med); margin: 12px auto; }
 
-  .tabs { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--bege-quente); border-bottom: 2px solid var(--terracota-clr); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px rgba(92,61,46,0.08); }
-  .tabs-row2 { display: grid; grid-template-columns: repeat(2, 1fr); background: var(--bege-quente); border-bottom: 2px solid var(--terracota-clr); position: sticky; top: 48px; z-index: 99; box-shadow: 0 2px 12px rgba(92,61,46,0.05); }
-  .tab { padding: 11px 4px; font-family: 'Lora', serif; font-size: 10px; color: var(--marrom-claro); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all 0.3s; text-align: center; border-right: 1px solid var(--terracota-clr); }
-  .tab:last-child { border-right: none; }
-  .tab .tab-emoji { font-size: 16px; display: block; margin-bottom: 2px; }
-  .tab.active { color: var(--terracota); border-bottom-color: var(--terracota); background: var(--bege-suave); font-weight: 600; }
+  .tabs { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--bege-quente); border-bottom: 2px solid var(--terracota-clr); position: sticky; top: 0; z-index: 100; }
+  .tabs-row2 { display: grid; grid-template-columns: repeat(2, 1fr); background: var(--bege-quente); border-bottom: 2px solid var(--terracota-clr); position: sticky; top: 48px; z-index: 99; }
+  .tab { padding: 11px 4px; font-size: 10px; color: var(--marrom-claro); cursor: pointer; text-align: center; border-right: 1px solid var(--terracota-clr); }
+  .tab.active { color: var(--terracota); background: var(--bege-suave); font-weight: 600; border-bottom: 2px solid var(--terracota); }
 
   .content { display: none; padding: 20px 16px; max-width: 520px; margin: 0 auto; }
   .content.active { display: block; animation: fadeIn 0.35s ease; }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-  .section-divider { display: flex; align-items: center; gap: 10px; margin: 18px 0 10px; }
-  .section-divider::before, .section-divider::after { content: ''; flex: 1; height: 1px; background: var(--terracota-clr); }
-  .section-divider span { font-family: 'Cormorant Garamond', serif; font-size: 11px; letter-spacing: 3px; color: var(--terracota-med); text-transform: uppercase; white-space: nowrap; }
-  .section-divider:first-of-type { margin-top: 4px; }
-
-  .step { background: var(--branco); border-radius: 14px; padding: 15px 16px; margin-bottom: 8px; display: flex; align-items: flex-start; gap: 12px; border: 1px solid var(--terracota-clr); transition: all 0.3s; cursor: pointer; position: relative; overflow: hidden; }
-  .step::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--terracota-clr); transition: background 0.3s; }
-  .step.done { background: var(--bege-rosa); border-color: var(--terracota-med); }
-  .step.done::before { background: var(--terracota); }
-  .step.done .step-title { text-decoration: line-through; color: var(--marrom-claro); }
-  .checkbox { width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid var(--terracota-clr); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; transition: all 0.3s; background: white; }
-  .step.done .checkbox { background: var(--terracota); border-color: var(--terracota); }
-  .checkbox svg { display: none; }
-  .step.done .checkbox svg { display: block; }
-  .step-num { position: absolute; top: 10px; right: 12px; font-family: 'Cormorant Garamond', serif; font-size: 11px; color: var(--terracota-clr); }
-  .step-body { flex: 1; }
-  .step-title { font-size: 13.5px; font-weight: 600; color: var(--marrom-escuro); margin-bottom: 3px; line-height: 1.3; padding-right: 24px; }
-  .step-desc { font-style: italic; font-size: 11.5px; color: var(--marrom-claro); line-height: 1.6; }
-  .step-tag { display: inline-block; background: var(--bege-quente); color: var(--terracota); font-size: 10px; padding: 2px 8px; border-radius: 20px; margin-top: 5px; }
-
-  .aviso { background: #F9EDE8; border: 1px solid var(--vermelho); border-radius: 12px; padding: 12px 14px; margin: 14px 0; font-style: italic; font-size: 12px; color: var(--vermelho); line-height: 1.6; text-align: center; }
-  .destaque { background: var(--bege-suave); border: 1px solid var(--terracota-clr); border-radius: 12px; padding: 11px 14px; margin: 0 0 14px; font-style: italic; font-size: 12px; color: var(--terracota); text-align: center; line-height: 1.6; }
-
+  /* Estilos de Step e Progresso mantidos */
   .progress-wrap { background: var(--bege-quente); border-radius: 20px; padding: 12px 16px; margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
   .progress-bar-bg { flex: 1; height: 6px; background: var(--terracota-clr); border-radius: 10px; overflow: hidden; }
-  .progress-bar { height: 100%; background: linear-gradient(90deg, var(--terracota-med), var(--terracota)); border-radius: 10px; transition: width 0.5s ease; }
-  .progress-text { font-family: 'Cormorant Garamond', serif; font-size: 13px; color: var(--terracota); white-space: nowrap; }
+  .progress-bar { height: 100%; background: linear-gradient(90deg, var(--terracota-med), var(--terracota)); transition: width 0.5s; }
+  .progress-text { font-family: 'Cormorant Garamond', serif; font-size: 13px; color: var(--terracota); }
 
-  .reset-btn { display: block; margin: 10px auto 0; padding: 9px 24px; background: transparent; border: 1px solid var(--terracota-clr); border-radius: 30px; font-family: 'Lora', serif; font-style: italic; font-size: 12px; color: var(--marrom-claro); cursor: pointer; transition: all 0.3s; }
-  .reset-btn:hover { border-color: var(--terracota); color: var(--terracota); }
+  .step { background: var(--branco); border-radius: 14px; padding: 15px 16px; margin-bottom: 8px; display: flex; align-items: flex-start; gap: 12px; border: 1px solid var(--terracota-clr); cursor: pointer; position: relative; }
+  .step.done { background: var(--bege-rosa); border-color: var(--terracota-med); }
+  .step.done .step-title { text-decoration: line-through; color: var(--marrom-claro); }
+  .checkbox { width: 24px; height: 24px; border-radius: 50%; border: 1.5px solid var(--terracota-clr); display: flex; align-items: center; justify-content: center; background: white; }
+  .step.done .checkbox { background: var(--terracota); border-color: var(--terracota); }
+  .step-title { font-size: 13.5px; font-weight: 600; }
+  .section-divider { display: flex; align-items: center; gap: 10px; margin: 18px 0 10px; }
+  .section-divider::before, .section-divider::after { content: ''; flex: 1; height: 1px; background: var(--terracota-clr); }
+  .section-divider span { font-family: 'Cormorant Garamond', serif; font-size: 11px; letter-spacing: 3px; color: var(--terracota-med); text-transform: uppercase; }
 
-  /* PEELING TRACKER */
-  .peeling-tracker { background: var(--branco); border: 1.5px solid var(--terracota-clr); border-radius: 16px; padding: 16px; margin-bottom: 18px; }
-  .peeling-tracker-title { font-family: 'Cormorant Garamond', serif; font-size: 13px; letter-spacing: 3px; color: var(--terracota-med); text-transform: uppercase; text-align: center; margin-bottom: 12px; }
-  .peeling-date-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-  .peeling-date-row label { font-style: italic; font-size: 11.5px; color: var(--marrom-claro); white-space: nowrap; }
-  .peeling-date-row input[type="date"] { flex: 1; padding: 7px 10px; border: 1px solid var(--terracota-clr); border-radius: 10px; font-family: 'Lora', serif; font-size: 12px; color: var(--marrom-escuro); background: var(--bege-suave); outline: none; cursor: pointer; }
-  .peeling-info-box { border-radius: 12px; padding: 11px 14px; text-align: center; font-size: 12px; line-height: 1.7; margin-top: 4px; }
-  .peeling-info-box.ok   { background: #D4E8D6; color: #3D6B43; border: 1px solid #A8CEAB; }
-  .peeling-info-box.none { background: var(--bege-quente); color: var(--marrom-claro); border: 1px solid var(--terracota-clr); font-style: italic; }
-  .peeling-save-btn { display: block; margin: 10px auto 0; padding: 7px 22px; background: var(--terracota); border: none; border-radius: 30px; font-family: 'Lora', serif; font-style: italic; font-size: 11.5px; color: white; cursor: pointer; transition: all 0.3s; }
-
-  /* NOVA ABA DE CONFIGURAÇÃO SIMPLIFICADA */
-  .settings-section { background: var(--branco); border: 1px solid var(--terracota-clr); border-radius: 16px; padding: 16px; margin-bottom: 16px; }
-  .settings-section-title { font-family: 'Cormorant Garamond', serif; font-size: 13px; letter-spacing: 3px; color: var(--terracota-med); text-transform: uppercase; margin-bottom: 14px; text-align: center; }
-  .settings-field { margin-bottom: 12px; }
-  .settings-label { font-style: italic; font-size: 11px; color: var(--marrom-claro); margin-bottom: 4px; display: block; }
-  .settings-input { width: 100%; padding: 12px; border: 1px solid var(--terracota-clr); border-radius: 10px; font-family: 'Lora', serif; font-size: 14px; color: var(--marrom-escuro); background: var(--bege-suave); outline: none; }
-  .btn-group { display: flex; gap: 8px; margin-top: 10px; }
-  .settings-save-btn { flex: 2; padding: 12px; background: var(--terracota); border: none; border-radius: 30px; font-family: 'Lora', serif; font-style: italic; font-size: 12px; color: white; cursor: pointer; }
-  .settings-del-btn { flex: 1; padding: 12px; background: #dc3545; border: none; border-radius: 30px; font-family: 'Lora', serif; font-style: italic; font-size: 12px; color: white; cursor: pointer; }
-
-  .toast { position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--marrom-escuro); color: var(--terracota-clr); padding: 10px 22px; border-radius: 30px; font-family: 'Lora', serif; font-style: italic; font-size: 12px; opacity: 0; transition: all 0.4s; z-index: 999; pointer-events: none; white-space: nowrap; }
-  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  /* ESTILO DA ABA CONFIGURAÇÃO CONFORME AS FOTOS */
+  .config-container { text-align: center; }
+  .config-section-title { font-family: 'Cormorant Garamond', serif; font-size: 14px; letter-spacing: 4px; color: var(--marrom-medio); text-transform: uppercase; margin: 30px 0 20px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+  .config-field { margin-bottom: 16px; text-align: left; }
+  .config-label { font-family: 'Lora', serif; font-style: italic; font-size: 11px; color: var(--marrom-claro); margin-bottom: 6px; display: block; margin-left: 4px; }
+  .config-input { width: 100%; padding: 12px 16px; background: var(--bege-suave); border: 1px solid var(--marrom-claro); border-radius: 12px; font-family: 'Lora', serif; font-size: 13px; color: var(--marrom-escuro); outline: none; transition: border 0.3s; }
+  .config-input:focus { border-color: var(--terracota); }
+  
+  .save-btn { background: none; border: none; font-family: 'Lora', serif; font-style: italic; font-size: 11px; color: var(--terracota-med); cursor: pointer; margin-top: 5px; text-decoration: underline; }
+  .restore-link { display: block; margin: 40px auto; font-size: 11px; color: var(--marrom-claro); text-decoration: underline; cursor: pointer; font-style: italic; }
+  
+  .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: var(--marrom-escuro); color: white; padding: 8px 20px; border-radius: 20px; font-size: 12px; opacity: 0; transition: 0.3s; z-index: 1000; }
+  .toast.show { opacity: 1; }
 </style>
 </head>
 <body>
@@ -101,117 +75,97 @@
   <div class="orn">✦ · ✦ · ✦</div>
   <h1>Skincare Ritual</h1>
   <div class="header-line"></div>
-  <p id="header-subtitle">Sua rotina personalizada, passo a passo</p>
+  <p>Sua rotina personalizada, passo a passo</p>
 </div>
 
 <div class="tabs">
-  <div class="tab active" onclick="showTab('manha',this)"><span class="tab-emoji">☀️</span>Manhã</div>
-  <div class="tab" onclick="showTab('noite-af',this)"><span class="tab-emoji">⚡</span>Noite AF</div>
-  <div class="tab" onclick="showTab('noite-ac',this)"><span class="tab-emoji">🌙</span>Noite Ácidos</div>
-  <div class="tab" onclick="showTab('virilha',this)"><span class="tab-emoji">✿</span>Virilha</div>
+  <div class="tab active" onclick="showTab('manha',this)">☀️ Manhã</div>
+  <div class="tab" onclick="showTab('noite-af',this)">⚡ Noite AF</div>
+  <div class="tab" onclick="showTab('noite-ac',this)">🌙 Noite Ácidos</div>
+  <div class="tab" onclick="showTab('virilha',this)">✿ Virilha</div>
 </div>
 <div class="tabs-row2">
-  <div class="tab" onclick="showTab('peeling',this)"><span class="tab-emoji">✦</span>Peeling</div>
-  <div class="tab" onclick="showTab('config',this)"><span class="tab-emoji">⚙️</span>Config.</div>
+  <div class="tab" onclick="showTab('peeling',this)">✦ Peeling</div>
+  <div class="tab" onclick="showTab('config',this)">⚙️ Config.</div>
 </div>
 
 <div class="content active" id="tab-manha">
-  <div class="progress-wrap">
-    <div class="progress-bar-bg"><div class="progress-bar" id="bar-manha" style="width:0%"></div></div>
-    <span class="progress-text" id="txt-manha">0 / 4</span>
-  </div>
-  <div class="section-divider"><span>✨ Rosto</span></div>
-  <div class="step" data-key="manha-0" onclick="toggle(this,'manha',4)">
-    <div class="checkbox"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5L5 9L13 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
-    <div class="step-body">
-      <div class="step-title class-gel">Gel Anti-Oleosidade</div>
-      <div class="step-desc">Camada fina — leave-on, não enxague.</div>
-    </div>
-  </div>
-  <div class="step" data-key="manha-1" onclick="toggle(this,'manha',4)">
-    <div class="checkbox"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5L5 9L13 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
-    <div class="step-body">
-      <div class="step-title class-serum">Sérum Secativo ✦</div>
-      <div class="step-desc">Movimentos circulares.</div>
-    </div>
-  </div>
-  <div class="section-divider"><span>💄 Finalização</span></div>
-  <div class="step" data-key="manha-2" onclick="toggle(this,'manha',4)">
-    <div class="checkbox"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5L5 9L13 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
-    <div class="step-body"><div class="step-title">Protetor Solar ☀️</div></div>
-  </div>
-  <div class="step" data-key="manha-3" onclick="toggle(this,'manha',4)">
-    <div class="checkbox"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5L5 9L13 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
-    <div class="step-body"><div class="step-title">Maquiagem 💄</div></div>
-  </div>
-  <button class="reset-btn" onclick="resetTab('manha',4)">↺ Resetar</button>
-</div>
-
-<div class="content" id="tab-noite-af">
-  <div class="step" data-key="na-1" onclick="toggle(this,'noite-af',2)">
-    <div class="checkbox"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5L5 9L13 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
-    <div class="step-body"><div class="step-title class-gel">Gel Anti-Oleosidade</div></div>
-  </div>
-  <div class="step" data-key="na-2" onclick="toggle(this,'noite-af',2)">
-    <div class="checkbox"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5L5 9L13 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
-    <div class="step-body"><div class="step-title class-serum">Sérum Secativo ✦</div></div>
-  </div>
-</div>
-
-<div class="content" id="tab-noite-ac">
-    <div class="step" data-key="nac-1" onclick="toggle(this,'noite-ac',2)">
-        <div class="checkbox"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5L5 9L13 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
-        <div class="step-body"><div class="step-title class-gel">Gel Anti-Oleosidade</div></div>
-    </div>
-    <div class="step" data-key="nac-2" onclick="toggle(this,'noite-ac',2)">
-        <div class="checkbox"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5L5 9L13 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
-        <div class="step-body"><div class="step-title class-serum">Sérum Secativo ✦</div></div>
-    </div>
-</div>
-
-<div class="content" id="tab-virilha">
-    <div class="step" data-key="v-1" onclick="toggle(this,'virilha',2)">
-        <div class="checkbox"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5L5 9L13 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
-        <div class="step-body"><div class="step-title class-gel">Gel Anti-Oleosidade</div></div>
-    </div>
-    <div class="step" data-key="v-2" onclick="toggle(this,'virilha',2)">
-        <div class="checkbox"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5L5 9L13 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
-        <div class="step-body"><div class="step-title class-serum">Sérum Secativo ✦</div></div>
-    </div>
-</div>
-
-<div class="content" id="tab-peeling">
-    <div class="peeling-tracker">
-        <div class="peeling-tracker-title">· Último Peeling ·</div>
-        <input type="date" id="peeling-date-input" onchange="savePeelingDate()" style="width:100%; padding:10px; border-radius:10px; border:1px solid var(--terracota-clr);">
-    </div>
+  <div class="progress-wrap"><div class="progress-bar-bg"><div class="progress-bar" id="bar-manha" style="width:0%"></div></div><span class="progress-text" id="txt-manha">0/3</span></div>
+  <div class="section-divider"><span>Rotina</span></div>
+  <div class="step" data-key="m1" onclick="toggle(this,'manha',3)"><div class="checkbox"></div><div class="step-body"><div class="step-title class-mousse">Mousse Anti-Oleosidade</div></div></div>
+  <div class="step" data-key="m2" onclick="toggle(this,'manha',3)"><div class="checkbox"></div><div class="step-body"><div class="step-title class-gel">Gel Anti-Oleosidade</div></div></div>
+  <div class="step" data-key="m3" onclick="toggle(this,'manha',3)"><div class="checkbox"></div><div class="step-body"><div class="step-title class-protetor">Protetor Solar</div></div></div>
 </div>
 
 <div class="content" id="tab-config">
-  <div class="settings-section">
-    <div class="settings-section-title">📦 Gerenciar Produtos</div>
+  <div class="config-container">
     
-    <div class="settings-field">
-      <label class="settings-label">Nome do Gel / Produto Principal</label>
-      <input class="settings-input" id="cfg-gel" type="text" placeholder="Ex: continua refle">
-      <div class="btn-group">
-        <button class="settings-save-btn" onclick="saveConfig()">Adicionar / Salvar</button>
-        <button class="settings-del-btn" onclick="deleteProd('gel')">Retirar</button>
-      </div>
+    <div class="config-section-title">✨ PRODUTOS — ROSTO</div>
+    
+    <div class="config-field">
+      <label class="config-label">Mousse de limpeza</label>
+      <input type="text" class="config-input" id="in-mousse" onchange="saveSingle('mousse')" placeholder="Mousse Anti-Oleosidade">
     </div>
 
-    <div class="settings-field" style="margin-top: 30px;">
-      <label class="settings-label">Nome do Sérum / Secativo</label>
-      <input class="settings-input" id="cfg-serum" type="text" placeholder="Ex: sérum x">
-      <div class="btn-group">
-        <button class="settings-save-btn" onclick="saveConfig()">Adicionar / Salvar</button>
-        <button class="settings-del-btn" onclick="deleteProd('serum')">Retirar</button>
-      </div>
+    <div class="config-field">
+      <label class="config-label">Gel anti-oleosidade</label>
+      <input type="text" class="config-input" id="in-gel" onchange="saveSingle('gel')" placeholder="Gel Anti-Oleosidade">
     </div>
+
+    <div class="config-field">
+      <label class="config-label">Sérum secativo</label>
+      <input type="text" class="config-input" id="in-serum" onchange="saveSingle('serum')" placeholder="Sérum Secativo">
+    </div>
+
+    <div class="config-field">
+      <label class="config-label">Tranexâmico</label>
+      <input type="text" class="config-input" id="in-trane" onchange="saveSingle('trane')" placeholder="Tranexâmico Creamy">
+    </div>
+
+    <div class="config-field">
+      <label class="config-label">Mandélico</label>
+      <input type="text" class="config-input" id="in-mande" onchange="saveSingle('mande')" placeholder="Mandélico Creamy">
+    </div>
+
+    <div class="config-field">
+      <label class="config-label">Hidratante facial</label>
+      <input type="text" class="config-input" id="in-hidra-f" onchange="saveSingle('hidra-f')" placeholder="Hidratante Avon Care Face">
+    </div>
+
+    <div class="config-field">
+      <label class="config-label">Protetor solar</label>
+      <input type="text" class="config-input" id="in-protetor" onchange="saveSingle('protetor')" placeholder="Protetor Solar">
+    </div>
+
+    <div class="config-section-title">✿ PRODUTOS — VIRILHA</div>
+
+    <div class="config-field">
+      <label class="config-label">Sabonete salicílico</label>
+      <input type="text" class="config-input" id="in-sabo-v" onchange="saveSingle('sabo-v')" placeholder="Sabonete Salicílico">
+    </div>
+
+    <div class="config-field">
+      <label class="config-label">Hidratante corporal</label>
+      <input type="text" class="config-input" id="in-hidra-c" onchange="saveSingle('hidra-c')" placeholder="Hidratante corporal">
+    </div>
+
+    <div class="config-section-title">✦ PRODUTOS — PEELING</div>
+
+    <div class="config-field">
+      <label class="config-label">Peeling retinóico</label>
+      <input type="text" class="config-input" id="in-peel-ret" onchange="saveSingle('peel-ret')" placeholder="Retinóico — 8 minutos">
+    </div>
+
+    <div class="config-field">
+      <label class="config-label">TCA (concentração/descrição)</label>
+      <input type="text" class="config-input" id="in-peel-tca" onchange="saveSingle('peel-tca')" placeholder="TCA 35%">
+    </div>
+
+    <span class="restore-link" onclick="resetAll()">↺ Restaurar padrões</span>
   </div>
 </div>
 
-<div class="toast" id="toast"></div>
+<div class="toast" id="toast">Alteração salva!</div>
 
 <script>
   function showTab(id, el) {
@@ -223,76 +177,51 @@
 
   function toggle(el, tabId, total) {
     el.classList.toggle('done');
-    const key = el.getAttribute('data-key');
-    if (el.classList.contains('done')) localStorage.setItem('check-' + key, 'true');
-    else localStorage.removeItem('check-' + key);
     updateProgress(tabId, total);
   }
 
   function updateProgress(tabId, total) {
-    const bar = document.getElementById('bar-' + tabId);
-    const txt = document.getElementById('txt-' + tabId);
-    if (!bar || !txt) return;
     const done = document.getElementById('tab-' + tabId).querySelectorAll('.step.done').length;
-    bar.style.width = (done / total * 100) + '%';
-    txt.textContent = done + ' / ' + total;
+    document.getElementById('bar-' + tabId).style.width = (done/total*100) + '%';
+    document.getElementById('txt-' + tabId).innerText = done + '/' + total;
   }
 
-  function saveConfig() {
-    const gel = document.getElementById('cfg-gel').value;
-    const serum = document.getElementById('cfg-serum').value;
-    localStorage.setItem('sk-gel', gel);
-    localStorage.setItem('sk-serum', serum);
-    applyNames();
-    showToast('Produto atualizado!');
-  }
+  // Lógica de Salvar e Carregar conforme as fotos
+  const fields = ['mousse', 'gel', 'serum', 'trane', 'mande', 'hidra-f', 'protetor', 'sabo-v', 'hidra-c', 'peel-ret', 'peel-tca'];
 
-  function deleteProd(tipo) {
-    if(tipo === 'gel') {
-        localStorage.removeItem('sk-gel');
-        document.getElementById('cfg-gel').value = "";
-    } else {
-        localStorage.removeItem('sk-serum');
-        document.getElementById('cfg-serum').value = "";
-    }
+  function saveSingle(id) {
+    const val = document.getElementById('in-' + id).value;
+    localStorage.setItem('prod-' + id, val);
     applyNames();
-    showToast('Produto removido!');
+    showToast();
   }
 
   function applyNames() {
-    const gel = localStorage.getItem('sk-gel') || "Gel Anti-Oleosidade";
-    const serum = localStorage.getItem('sk-serum') || "Sérum Secativo ✦";
-    
-    document.querySelectorAll('.class-gel').forEach(el => el.innerText = gel);
-    document.querySelectorAll('.class-serum').forEach(el => el.innerText = serum);
-    
-    // Preenche os inputs da aba config
-    document.getElementById('cfg-gel').value = localStorage.getItem('sk-gel') || "";
-    document.getElementById('cfg-serum').value = localStorage.getItem('sk-serum') || "";
-  }
-
-  function resetTab(tabId, total) {
-    const steps = document.getElementById('tab-' + tabId).querySelectorAll('.step');
-    steps.forEach(s => {
-      s.classList.remove('done');
-      localStorage.removeItem('check-' + s.getAttribute('data-key'));
+    fields.forEach(id => {
+      const saved = localStorage.getItem('prod-' + id);
+      if (saved) {
+        document.getElementById('in-' + id).value = saved;
+        // Atualiza os nomes nas abas de rotina
+        const elements = document.querySelectorAll('.class-' + id);
+        elements.forEach(el => el.innerText = saved);
+      }
     });
-    updateProgress(tabId, total);
   }
 
-  function showToast(msg) {
+  function resetAll() {
+    if(confirm("Deseja restaurar os nomes originais?")) {
+      fields.forEach(id => localStorage.removeItem('prod-' + id));
+      location.reload();
+    }
+  }
+
+  function showToast() {
     const t = document.getElementById('toast');
-    t.textContent = msg; t.classList.add('show');
+    t.classList.add('show');
     setTimeout(() => t.classList.remove('show'), 2000);
   }
 
-  window.onload = function() {
-    applyNames();
-    document.querySelectorAll('.step').forEach(step => {
-      if (localStorage.getItem('check-' + step.getAttribute('data-key'))) step.classList.add('done');
-    });
-    updateProgress('manha', 4);
-  }
+  window.onload = applyNames;
 </script>
 
 </body>
