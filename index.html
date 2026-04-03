@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -15,79 +14,221 @@
   --terracota-med:#C49A8A;
   --terracota-clr:#E8D0C8;
   --bege-quente:#EDE0D8;
-  --bege-suave:#FAF5F2;
+  --bege-suave:#F2E9E1; /* Restaurada a cor de fundo original */
   --marrom:#5C3D2E;
-  --bg-input: #FCF8F6; /* Cor de fundo dos campos da imagem */
+  --border-color:#E6DED8; /* Cor das bordas suaves */
 }
 
 body{
   font-family:'Lora',serif;
-  background:var(--bege-suave);
+  background:var(--bege-suave); /* Fundo suave restaurado */
   margin:0;
+  color: var(--marrom);
 }
 
+/* Header */
 .header{
   text-align:center;
-  padding:25px;
+  padding: 30px 20px 20px 20px;
 }
 
+.header h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: normal;
+  text-transform: uppercase;
+  font-size: 20px;
+  letter-spacing: 2px;
+  margin: 0 0 10px 0;
+  color: var(--terracota-med);
+}
+
+.header p {
+  background: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  display: inline-block;
+  font-size: 13px;
+  color: #8C6F61;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+  margin: 0;
+}
+
+/* Tabs */
 .tabs{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  background:var(--bege-quente);
+  background:white; /* Tabs em fundo branco suave */
+  border-bottom: 1px solid var(--border-color);
 }
 
 .tab{
   text-align:center;
-  padding:10px;
+  padding:15px;
   cursor:pointer;
   font-size:12px;
+  color: #B29D91;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .tab.active{
   color:var(--terracota);
   font-weight:bold;
+  border-bottom: 2px solid var(--terracota);
 }
 
+/* Content Area */
 .content{
   display:none;
-  padding:20px;
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .content.active{
   display:block;
 }
 
+/* Section Dividers */
+.section-divider {
+    text-align: center;
+    margin: 30px 0 15px 0;
+    position: relative;
+    font-size: 11px;
+    color: var(--terracota-med);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.section-divider:before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: var(--border-color);
+    position: absolute;
+    top: 50%;
+    z-index: -1;
+}
+
+.section-divider span {
+    background: var(--bege-suave);
+    padding: 0 15px;
+}
+
+/* Steps (Cards) - RESTAURADOS */
 .step{
   background:white;
-  padding:12px;
-  margin:10px 0;
-  border-radius:10px;
+  padding:18px 20px;
+  margin:12px 0;
+  border-radius: 18px; /* Cantos arredondados restaurados */
   cursor:pointer;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.03); /* Sombra sutil restaurada */
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.step:after {
+    content: '→';
+    position: absolute;
+    right: 20px;
+    color: var(--terracota-med);
+    font-size: 18px;
+    opacity: 0.5;
 }
 
 .step.done{
-  text-decoration:line-through;
-  opacity:0.6;
+  opacity:0.5;
 }
 
-/* --- ESTILOS NOVOS DA ABA CONFIG (IGUAL À IMAGEM) --- */
+.step.done .step-title {
+    text-decoration:line-through;
+}
 
-.config-container {
+.step-text-container {
+    flex-grow: 1;
+}
+
+.step-title {
+    font-size: 15px;
+    color: var(--marrom);
+    margin-bottom: 3px;
+    display: block;
+}
+
+.step-detail {
+    font-size: 11px;
+    color: #8C6F61;
+    font-style: italic;
+}
+
+/* Tags de Aplicação */
+.step-tag {
     background: #F4EAE4;
+    color: #8C6F61;
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 10px;
+    margin-right: 5px;
+    display: inline-block;
+}
+
+/* Progress Bar */
+.progress-container {
+    background: white;
+    padding: 10px 15px;
+    border-radius: 20px;
+    margin: -10px auto 20px auto;
+    max-width: 90%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+    text-align: center;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    background: #E8D0C8;
+    border-radius: 3px;
+    margin-bottom: 3px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #C49A8A;
+    width: 0%; /* Inicia zerado, javascript controla */
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    font-size: 10px;
+    color: var(--terracota-med);
+}
+
+/* --- ESTILOS NOVOS DA ABA CONFIG (ESTILO DA IMAGEM DE REFERÊNCIA) --- */
+
+.config-card {
+    background: #F4EAE4; /* Cor de fundo maior do card de config */
     padding: 20px;
     border-radius: 20px;
     margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.03);
 }
 
-.config-header {
+.config-title {
     font-family: 'Cormorant Garamond', serif;
     text-transform: uppercase;
-    font-size: 13px;
+    font-size: 14px;
     letter-spacing: 2px;
-    color: var(--terracota-med);
+    color: var(--marrom);
     margin-bottom: 15px;
     display: block;
+}
+
+.input-group {
+    margin-bottom: 15px;
 }
 
 .label-image {
@@ -96,34 +237,43 @@ body{
     margin-bottom: 5px;
     display: block;
     font-style: italic;
+    padding-left: 10px;
 }
 
+/* Input com o estilo EXATO da imagem (borda grossa arredondada) */
 .input-image {
     width: 100%;
-    background: var(--bg-input);
-    border: 1px solid #EEDCD5;
-    border-radius: 15px;
-    padding: 12px 15px;
+    background: #FCF8F6; /* Cor de fundo do input */
+    border: 1px solid #EEDCD5; /* Borda visível */
+    border-radius: 18px; /* Cantos bem arredondados */
+    padding: 12px 18px;
     margin-bottom: 15px;
     box-sizing: border-box;
     font-family: 'Lora', serif;
     color: var(--marrom);
+    font-size: 13px;
 }
 
-.btn-salvar-img {
+.input-image::placeholder {
+    color: #B29D91;
+}
+
+/* Botões da Configuração */
+.btn-save {
     background: #A67C6D;
     color: white;
     border: none;
-    padding: 12px 25px;
+    padding: 15px 30px;
     border-radius: 25px;
     cursor: pointer;
     display: block;
-    margin: 10px auto;
+    margin: 20px auto;
     font-family: 'Lora', serif;
     font-size: 14px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.btn-restaurar-img {
+.btn-restore {
     background: none;
     border: none;
     color: #4A69BD; /* Azul conforme a imagem */
@@ -141,7 +291,12 @@ body{
 
 <div class="header">
 <h1>Skincare Ritual</h1>
-<p id="textoManha">Banho ~12h · rápida antes de sair ✨</p>
+<p id="topText">Banho ~12h · rápida antes de sair ✨</p>
+</div>
+
+<div class="progress-container">
+    <div class="progress-bar"><div class="progress-fill" id="pFill"></div></div>
+    <div class="progress-text" id="pText">0/5</div>
 </div>
 
 <div class="tabs">
@@ -152,50 +307,85 @@ body{
 </div>
 
 <div class="content active" id="tab-manha">
-<div class="step" onclick="toggle(this)">Limpeza no banho</div>
-<div class="step" onclick="toggle(this)">Gel Anti-Oleosidade</div>
-<div class="step" onclick="toggle(this)">Sérum</div>
-<div class="step" onclick="toggle(this)">Protetor solar</div>
+
+    <div class="section-divider"><span>🚿 BANHO</span></div>
+    <div class="step" onclick="toggle(this)">
+        <div class="step-text-container">
+            <span class="step-title" id="p1t">Limpeza no banho</span>
+            <span class="step-detail" id="p1d">Mousse Anti-Oleosidade no rosto.</span>
+        </div>
+    </div>
+
+    <div class="section-divider"><span>✨ ROSTO</span></div>
+    <div class="step" onclick="toggle(this)">
+        <div class="step-text-container">
+            <span class="step-title" id="p2t">Gel Anti-Oleosidade</span>
+            <span class="step-detail" id="p2d">Camada fina – leave-on, não enxágue.</span>
+            <div><span class="step-tag">2x ao dia – 1ª aplicação</span></div>
+        </div>
+    </div>
+    
+    <div class="step" onclick="toggle(this)">
+        <div class="step-text-container">
+            <span class="step-title" id="p3t">Sérum Secativo ✦</span>
+            <span class="step-detail" id="p3d">Movimentos circulares sobre o gel.</span>
+            <div><span class="step-tag">3x ao dia – 1ª aplicação</span></div>
+        </div>
+    </div>
+
+    <div class="section-divider"><span>☀️ FINALIZAÇÃO</span></div>
+    <div class="step" onclick="toggle(this)">
+        <div class="step-text-container">
+            <span class="step-title" id="p4t">Protetor Solar ☀️</span>
+            <span class="step-detail" id="p4d">Obrigatório – antes da maquiagem.</span>
+        </div>
+    </div>
+
 </div>
 
 <div class="content" id="tab-virilha">
-<div class="step" onclick="toggle(this)">Sabonete salicílico</div>
-<div class="step" onclick="toggle(this)">Gel</div>
-<div class="step" onclick="toggle(this)">Sérum</div>
+    <div class="section-divider"><span>Tratamento</span></div>
+    <div class="step" onclick="toggle(this)">Sabonete salicílico</div>
+    <div class="step" onclick="toggle(this)">Gel clareador</div>
+    <div class="step" onclick="toggle(this)">Sérum</div>
 </div>
 
 <div class="content" id="tab-noite">
-<div class="step" onclick="toggle(this)">Remover maquiagem</div>
-<div class="step" onclick="toggle(this)">Limpeza</div>
-<div class="step" onclick="toggle(this)">Hidratante</div>
+    <div class="section-divider"><span>Rotina Noturna</span></div>
+    <div class="step" onclick="toggle(this)">Remover maquiagem</div>
+    <div class="step" onclick="toggle(this)">Limpeza profunda</div>
+    <div class="step" onclick="toggle(this)">Hidratante</div>
 </div>
 
 <div class="content" id="tab-config">
 
-    <div class="config-container">
-        <span class="config-header">⏰ HORÁRIOS</span>
+    <div class="config-card">
+        <span class="config-title">⏰ HORÁRIOS</span>
         
         <label class="label-image">Manhã – horário / nota</label>
-        <input type="text" id="cfg_h1" class="input-image" placeholder="Banho ~12h · rápida antes de sair ✨">
+        <input type="text" id="cfg_top" class="input-image" placeholder="Banho ~12h · rápida antes de sair ✨">
         
         <label class="label-image">Noite AF – nota</label>
-        <input type="text" id="cfg_h2" class="input-image" placeholder="⚡ 1 dia sim · 1 dia não — nunca com ácidos">
+        <input type="text" id="cfg_night_af" class="input-image" placeholder="⚡ 1 dia sim · 1 dia não — nunca com ácidos">
         
         <label class="label-image">Noite Ácidos – nota</label>
-        <input type="text" id="cfg_h3" class="input-image" placeholder="✦ Só quando não for dia de alta frequência">
+        <input type="text" id="cfg_night_ac" class="input-image" placeholder="✦ Só quando não for dia de alta frequência">
     </div>
 
-    <div class="config-container">
-        <span class="config-header">☀️ MANHÃ</span>
+    <div class="config-card">
+        <span class="config-title">☀️ MANHÃ</span>
         
         <label class="label-image">Passo 1 – título</label>
         <input type="text" id="cfg_p1t" class="input-image" value="Limpeza no banho">
         
         <label class="label-image">Passo 1 – detalhe</label>
         <input type="text" id="cfg_p1d" class="input-image" value="Mousse Anti-Oleosidade no rosto.">
+
+        <label class="label-image">Passo 2 – título</label>
+        <input type="text" id="cfg_p2t" class="input-image" value="Gel Anti-Oleosidade">
     </div>
 
-    <div class="config-container">
+    <div class="config-card">
         <label class="label-image">Passo 4 – título</label>
         <input type="text" id="cfg_p4t" class="input-image" value="TCA 35% — dia 1 (8h)">
         
@@ -209,52 +399,81 @@ body{
         <input type="text" id="cfg_p5d" class="input-image" value="Repete mais 8 horas.">
     </div>
 
-    <button class="btn-salvar-img" onclick="salvar()">✓ Salvar configurações</button>
-    <button class="btn-restaurar-img" onclick="restaurar()">↺ Restaurar padrões</button>
+    <button class="btn-save" onclick="salvar()">✓ Salvar configurações</button>
+    <button class="btn-restore" onclick="restaurar()">↺ Restaurar padrões</button>
 
 </div>
 
 <script>
-
+// Funções de Tab e Toggle
 function showTab(id,el){
-document.querySelectorAll('.content').forEach(c=>c.classList.remove('active'));
-document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-
-document.getElementById('tab-'+id).classList.add('active');
-el.classList.add('active');
+    document.querySelectorAll('.content').forEach(c=>c.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+    document.getElementById('tab-'+id).classList.add('active');
+    el.classList.add('active');
 }
 
 function toggle(el){
-el.classList.toggle('done');
+    el.classList.toggle('done');
+    updateProgress();
 }
 
+// Lógica de Barra de Progresso
+function updateProgress() {
+    let steps = document.querySelectorAll('#tab-manha .step');
+    let doneSteps = document.querySelectorAll('#tab-manha .step.done');
+    let total = steps.length;
+    let done = doneSteps.length;
+    let percentage = (done / total) * 100;
+    
+    document.getElementById('pFill').style.width = percentage + '%';
+    document.getElementById('pText').innerText = done + '/' + total;
+}
+
+// Lógica de Configurações
 function salvar(){
-    let h1 = document.getElementById('cfg_h1').value;
-    if(h1) {
-        localStorage.setItem('horario_principal', h1);
-        document.getElementById('textoManha').innerText = h1;
+    // Salva o texto do topo
+    let topText = document.getElementById('cfg_top').value;
+    if(topText) {
+        localStorage.setItem('cfg_top_text', topText);
+        document.getElementById('topText').innerText = topText;
     }
-    // Adicione aqui lógica para salvar os outros campos se desejar
+    
+    // Salva os títulos e detalhes (exemplo passo 1)
+    localStorage.setItem('cfg_p1t', document.getElementById('cfg_p1t').value);
+    localStorage.setItem('cfg_p1d', document.getElementById('cfg_p1d').value);
+    
+    aplicarConfig();
     alert("Configurações salvas!");
 }
 
 function restaurar(){
-    if(confirm("Restaurar padrões?")){
+    if(confirm("Deseja restaurar os padrões originais?")){
         localStorage.clear();
         location.reload();
     }
 }
 
-function carregar(){
-    let h1 = localStorage.getItem('horario_principal');
-    if(h1){
-        document.getElementById('textoManha').innerText = h1;
-        document.getElementById('cfg_h1').value = h1;
+function aplicarConfig(){
+    let topText = localStorage.getItem('cfg_top_text');
+    if(topText) {
+        document.getElementById('topText').innerText = topText;
+        document.getElementById('cfg_top').value = topText;
     }
+
+    // Carrega textos customizados se houver
+    let p1t = localStorage.getItem('cfg_p1t');
+    if(p1t) document.getElementById('p1t').innerText = p1t;
+    let p1d = localStorage.getItem('cfg_p1d');
+    if(p1d) document.getElementById('p1d').innerText = p1d;
+    // ... adicione para outros campos se salvar
 }
 
-window.onload = carregar;
-
+// Inicialização
+window.onload = function() {
+    aplicarConfig();
+    updateProgress();
+};
 </script>
 
 </body>
