@@ -22,7 +22,6 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { background: var(--bege-suave); font-family: 'Lora', serif; color: var(--marrom-escuro); min-height: 100vh; padding-bottom: 48px; }
 
-  /* Estilos originais mantidos integralmente conforme solicitado */
   .header { background: linear-gradient(160deg, var(--bege-quente) 0%, var(--terracota-clr) 100%); padding: 32px 20px 24px; text-align: center; }
   .orn { font-family: 'Cormorant Garamond', serif; color: var(--terracota-med); font-size: 16px; letter-spacing: 6px; margin-bottom: 8px; }
   .header h1 { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 300; color: var(--marrom-escuro); letter-spacing: 2px; }
@@ -79,23 +78,18 @@
   .peeling-date-row input[type="date"] { flex: 1; padding: 7px 10px; border: 1px solid var(--terracota-clr); border-radius: 10px; font-family: 'Lora', serif; font-size: 12px; color: var(--marrom-escuro); background: var(--bege-suave); outline: none; cursor: pointer; }
   .peeling-info-box { border-radius: 12px; padding: 11px 14px; text-align: center; font-size: 12px; line-height: 1.7; margin-top: 4px; }
   .peeling-info-box.ok   { background: #D4E8D6; color: #3D6B43; border: 1px solid #A8CEAB; }
-  .peeling-info-box.soon { background: #FFF3CD; color: #856404; border: 1px solid #FFD96E; }
-  .peeling-info-box.now  { background: #F9EDE8; color: var(--vermelho); border: 1px solid #E8B4A4; }
   .peeling-info-box.none { background: var(--bege-quente); color: var(--marrom-claro); border: 1px solid var(--terracota-clr); font-style: italic; }
-  .peeling-info-box strong { display: block; font-size: 14px; margin-bottom: 2px; }
   .peeling-save-btn { display: block; margin: 10px auto 0; padding: 7px 22px; background: var(--terracota); border: none; border-radius: 30px; font-family: 'Lora', serif; font-style: italic; font-size: 11.5px; color: white; cursor: pointer; transition: all 0.3s; }
-  .peeling-save-btn:hover { background: var(--marrom-medio); }
 
-  /* SETTINGS */
+  /* NOVA ABA DE CONFIGURAÇÃO SIMPLIFICADA */
   .settings-section { background: var(--branco); border: 1px solid var(--terracota-clr); border-radius: 16px; padding: 16px; margin-bottom: 16px; }
   .settings-section-title { font-family: 'Cormorant Garamond', serif; font-size: 13px; letter-spacing: 3px; color: var(--terracota-med); text-transform: uppercase; margin-bottom: 14px; text-align: center; }
   .settings-field { margin-bottom: 12px; }
   .settings-label { font-style: italic; font-size: 11px; color: var(--marrom-claro); margin-bottom: 4px; display: block; }
-  .settings-input { width: 100%; padding: 9px 12px; border: 1px solid var(--terracota-clr); border-radius: 10px; font-family: 'Lora', serif; font-size: 12.5px; color: var(--marrom-escuro); background: var(--bege-suave); outline: none; }
-  .settings-time-row { display: flex; align-items: center; gap: 10px; }
-  .settings-time-row input[type="time"] { flex: 1; padding: 9px 12px; border: 1px solid var(--terracota-clr); border-radius: 10px; font-family: 'Lora', serif; font-size: 12.5px; color: var(--marrom-escuro); background: var(--bege-suave); outline: none; cursor: pointer; }
-  .settings-save-btn { display: block; margin: 6px auto 0; padding: 9px 28px; background: var(--terracota); border: none; border-radius: 30px; font-family: 'Lora', serif; font-style: italic; font-size: 12px; color: white; cursor: pointer; transition: all 0.3s; width: 100%; }
-  .settings-reset-link { display: block; text-align: center; margin-top: 8px; font-style: italic; font-size: 11px; color: var(--marrom-claro); cursor: pointer; text-decoration: underline; }
+  .settings-input { width: 100%; padding: 12px; border: 1px solid var(--terracota-clr); border-radius: 10px; font-family: 'Lora', serif; font-size: 14px; color: var(--marrom-escuro); background: var(--bege-suave); outline: none; }
+  .btn-group { display: flex; gap: 8px; margin-top: 10px; }
+  .settings-save-btn { flex: 2; padding: 12px; background: var(--terracota); border: none; border-radius: 30px; font-family: 'Lora', serif; font-style: italic; font-size: 12px; color: white; cursor: pointer; }
+  .settings-del-btn { flex: 1; padding: 12px; background: #dc3545; border: none; border-radius: 30px; font-family: 'Lora', serif; font-style: italic; font-size: 12px; color: white; cursor: pointer; }
 
   .toast { position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--marrom-escuro); color: var(--terracota-clr); padding: 10px 22px; border-radius: 30px; font-family: 'Lora', serif; font-style: italic; font-size: 12px; opacity: 0; transition: all 0.4s; z-index: 999; pointer-events: none; white-space: nowrap; }
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
@@ -126,205 +120,100 @@
     <div class="progress-bar-bg"><div class="progress-bar" id="bar-manha" style="width:0%"></div></div>
     <span class="progress-text" id="txt-manha">0 / 4</span>
   </div>
-  <div class="destaque" id="dest-manha">Acorda · banho às 12:00 · rápida antes de sair ✨</div>
-
   <div class="section-divider"><span>✨ Rosto</span></div>
   <div class="step" data-key="manha-0" onclick="toggle(this,'manha',4)">
     <div class="checkbox"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5L5 9L13 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
     <div class="step-body">
-      <div class="step-title">Gel Anti-Oleosidade</div>
+      <div class="step-title class-gel">Gel Anti-Oleosidade</div>
       <div class="step-desc">Camada fina — leave-on, não enxague.</div>
-      <span class="step-tag">2x ao dia — 1ª aplicação</span>
     </div>
-    <span class="step-num">01</span>
   </div>
   <div class="step" data-key="manha-1" onclick="toggle(this,'manha',4)">
     <div class="checkbox"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5L5 9L13 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
     <div class="step-body">
-      <div class="step-title">Sérum Secativo ✦</div>
-      <div class="step-desc">Movimentos circulares sobre o gel.</div>
-      <span class="step-tag">3x ao dia — 1ª aplicação</span>
+      <div class="step-title class-serum">Sérum Secativo ✦</div>
+      <div class="step-desc">Movimentos circulares.</div>
     </div>
-    <span class="step-num">02</span>
   </div>
-
   <div class="section-divider"><span>💄 Finalização</span></div>
   <div class="step" data-key="manha-2" onclick="toggle(this,'manha',4)">
     <div class="checkbox"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5L5 9L13 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
-    <div class="step-body">
-      <div class="step-title">Protetor Solar ☀️</div>
-      <div class="step-desc">Obrigatório — antes da maquiagem.</div>
-    </div>
-    <span class="step-num">03</span>
+    <div class="step-body"><div class="step-title">Protetor Solar ☀️</div></div>
   </div>
   <div class="step" data-key="manha-3" onclick="toggle(this,'manha',4)">
     <div class="checkbox"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5L5 9L13 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
-    <div class="step-body">
-      <div class="step-title">Primer + Maquiagem 💄</div>
-      <div class="step-desc">Após o protetor secar — pronta pra ir!</div>
-    </div>
-    <span class="step-num">04</span>
+    <div class="step-body"><div class="step-title">Maquiagem 💄</div></div>
   </div>
-
-<button class="reset-btn" onclick="resetTab('manha',4)">↺ Resetar manhã</button>
+  <button class="reset-btn" onclick="resetTab('manha',4)">↺ Resetar</button>
 </div>
 
 <div class="content" id="tab-noite-af">
-  <div class="progress-wrap"><div class="progress-bar-bg"><div class="progress-bar" id="bar-noite-af" style="width:0%"></div></div><span class="progress-text" id="txt-noite-af">0 / 6</span></div>
-  <div class="destaque">⚡ 1 dia sim · 1 dia não — nunca com ácidos</div>
-
-  <div class="section-divider"><span>🧴 Limpeza</span></div>
-  <div class="step" data-key="noiteaf-0" onclick="toggle(this,'noite-af',6)">
+  <div class="step" data-key="na-1" onclick="toggle(this,'noite-af',2)">
     <div class="checkbox"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5L5 9L13 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
-    <div class="step-body"><div class="step-title">Remove maquiagem</div><div class="step-desc">Lenço umedecido ou água micelar.</div></div>
+    <div class="step-body"><div class="step-title class-gel">Gel Anti-Oleosidade</div></div>
   </div>
-  <div class="step" data-key="noiteaf-1" onclick="toggle(this,'noite-af',6)">
+  <div class="step" data-key="na-2" onclick="toggle(this,'noite-af',2)">
     <div class="checkbox"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5L5 9L13 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
-    <div class="step-body"><div class="step-title">Mousse Anti-Oleosidade</div><div class="step-desc">Limpeza do rosto — enxague bem.</div></div>
+    <div class="step-body"><div class="step-title class-serum">Sérum Secativo ✦</div></div>
   </div>
-
-  <div class="section-divider"><span>⚡ Tratamento</span></div>
-  <div class="step" data-key="noiteaf-2" onclick="toggle(this,'noite-af',6)">
-    <div class="checkbox"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5L5 9L13 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
-    <div class="step-body"><div class="step-title">Alta Frequência ⚡</div><div class="step-desc">3-5 min no rosto, circulares.</div></div>
-  </div>
-  <div class="step" data-key="noiteaf-3" onclick="toggle(this,'noite-af',6)">
-    <div class="checkbox"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5L5 9L13 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
-    <div class="step-body"><div class="step-title">Gel Anti-Oleosidade</div><div class="step-desc">Após a alta frequência.</div></div>
-  </div>
-  <div class="step" data-key="noiteaf-4" onclick="toggle(this,'noite-af',6)">
-    <div class="checkbox"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5L5 9L13 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
-    <div class="step-body"><div class="step-title">Sérum Secativo ✦</div></div>
-  </div>
-  <div class="step" data-key="noiteaf-5" onclick="toggle(this,'noite-af',6)">
-    <div class="checkbox"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5L5 9L13 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
-    <div class="step-body"><div class="step-title" id="title-hidratante-af">Hidratante Facial</div></div>
-  </div>
-
-<button class="reset-btn" onclick="resetTab('noite-af',6)">↺ Resetar</button>
 </div>
 
 <div class="content" id="tab-noite-ac">
-  <div class="progress-wrap"><div class="progress-bar-bg"><div class="progress-bar" id="bar-noite-ac" style="width:0%"></div></div><span class="progress-text" id="txt-noite-ac">0 / 7</span></div>
-  <div class="destaque">✦ Só quando não for dia de alta frequência</div>
-
-  <div class="section-divider"><span>🧴 Limpeza</span></div>
-  <div class="step" data-key="noiteac-0" onclick="toggle(this,'noite-ac',7)">
-    <div class="checkbox"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5L5 9L13 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
-    <div class="step-body"><div class="step-title">Remove maquiagem</div></div>
-  </div>
-  <div class="step" data-key="noiteac-1" onclick="toggle(this,'noite-ac',7)">
-    <div class="checkbox"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5L5 9L13 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
-    <div class="step-body"><div class="step-title">Mousse Anti-Oleosidade</div></div>
-  </div>
-
-  <div class="section-divider"><span>🧪 Ácidos</span></div>
-  <div class="step" data-key="noiteac-2" onclick="toggle(this,'noite-ac',7)">
-    <div class="checkbox"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5L5 9L13 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
-    <div class="step-body"><div class="step-title" id="title-tranexamico">Tranexâmico Creamy</div></div>
-  </div>
-  <div class="step" data-key="noiteac-3" onclick="toggle(this,'noite-ac',7)">
-    <div class="checkbox"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5L5 9L13 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
-    <div class="step-body"><div class="step-title" id="title-mandelico">Mandélico Creamy</div></div>
-  </div>
-
-  <div class="section-divider"><span>✨ Tratamento</span></div>
-  <div class="step" data-key="noiteac-4" onclick="toggle(this,'noite-ac',7)">
-    <div class="checkbox"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5L5 9L13 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
-    <div class="step-body"><div class="step-title">Gel Anti-Oleosidade</div></div>
-  </div>
-  <div class="step" data-key="noiteac-5" onclick="toggle(this,'noite-ac',7)">
-    <div class="checkbox"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5L5 9L13 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
-    <div class="step-body"><div class="step-title">Sérum Secativo ✦</div></div>
-  </div>
-  <div class="step" data-key="noiteac-6" onclick="toggle(this,'noite-ac',7)">
-    <div class="checkbox"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5L5 9L13 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
-    <div class="step-body"><div class="step-title" id="title-hidratante-ac">Hidratante Facial</div></div>
-  </div>
-
-  <div class="aviso">⚠️ Nunca alta frequência + ácidos na mesma noite.</div>
-  <button class="reset-btn" onclick="resetTab('noite-ac',7)">↺ Resetar</button>
+    <div class="step" data-key="nac-1" onclick="toggle(this,'noite-ac',2)">
+        <div class="checkbox"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5L5 9L13 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <div class="step-body"><div class="step-title class-gel">Gel Anti-Oleosidade</div></div>
+    </div>
+    <div class="step" data-key="nac-2" onclick="toggle(this,'noite-ac',2)">
+        <div class="checkbox"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5L5 9L13 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <div class="step-body"><div class="step-title class-serum">Sérum Secativo ✦</div></div>
+    </div>
 </div>
 
 <div class="content" id="tab-virilha">
-  <div class="progress-wrap"><div class="progress-bar-bg"><div class="progress-bar" id="bar-virilha" style="width:0%"></div></div><span class="progress-text" id="txt-virilha">0 / 6</span></div>
-
-  <div class="section-divider"><span>☀️ Manhã</span></div>
-  <div class="step" data-key="virilha-0" onclick="toggle(this,'virilha',6)">
-    <div class="checkbox"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5L5 9L13 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
-    <div class="step-body"><div class="step-title" id="title-sabonete-v1">Sabonete Salicílico</div></div>
-  </div>
-  <div class="step" data-key="virilha-1" onclick="toggle(this,'virilha',6)">
-    <div class="checkbox"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5L5 9L13 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
-    <div class="step-body"><div class="step-title">Gel Anti-Oleosidade</div></div>
-  </div>
-  <div class="step" data-key="virilha-2" onclick="toggle(this,'virilha',6)">
-    <div class="checkbox"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5L5 9L13 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
-    <div class="step-body"><div class="step-title">Sérum Secativo ✦</div></div>
-  </div>
-
-  <div class="section-divider"><span>🌙 Noite</span></div>
-  <div class="step" data-key="virilha-3" onclick="toggle(this,'virilha',6)">
-    <div class="checkbox"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5L5 9L13 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
-    <div class="step-body"><div class="step-title" id="title-sabonete-v2">Sabonete + Gel</div></div>
-  </div>
-  <div class="step" data-key="virilha-4" onclick="toggle(this,'virilha',6)">
-    <div class="checkbox"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5L5 9L13 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
-    <div class="step-body"><div class="step-title">Sérum Secativo ✦</div></div>
-  </div>
-  <div class="step" data-key="virilha-5" onclick="toggle(this,'virilha',6)">
-    <div class="checkbox"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5L5 9L13 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
-    <div class="step-body"><div class="step-title" id="title-hidratante-v">Hidratante corporal</div></div>
-  </div>
-
-  <button class="reset-btn" onclick="resetTab('virilha',6)">↺ Resetar</button>
+    <div class="step" data-key="v-1" onclick="toggle(this,'virilha',2)">
+        <div class="checkbox"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5L5 9L13 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <div class="step-body"><div class="step-title class-gel">Gel Anti-Oleosidade</div></div>
+    </div>
+    <div class="step" data-key="v-2" onclick="toggle(this,'virilha',2)">
+        <div class="checkbox"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5L5 9L13 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <div class="step-body"><div class="step-title class-serum">Sérum Secativo ✦</div></div>
+    </div>
 </div>
 
 <div class="content" id="tab-peeling">
-  <div class="peeling-tracker">
-    <div class="peeling-tracker-title">· Rastreador de Peeling ·</div>
-    <div class="peeling-date-row">
-      <label>Último peeling:</label>
-      <input type="date" id="peeling-date-input" onchange="savePeelingDate()">
+    <div class="peeling-tracker">
+        <div class="peeling-tracker-title">· Último Peeling ·</div>
+        <input type="date" id="peeling-date-input" onchange="savePeelingDate()" style="width:100%; padding:10px; border-radius:10px; border:1px solid var(--terracota-clr);">
     </div>
-    <div class="peeling-info-box none" id="peeling-info">Selecione a data acima.</div>
-  </div>
-
-  <div class="section-divider"><span>✨ Rosto</span></div>
-  <div class="step" data-key="peeling-0" onclick="toggle(this,'peeling',5)">
-    <div class="checkbox"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5L5 9L13 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
-    <div class="step-body"><div class="step-title" id="title-retinoico">Retinóico</div></div>
-  </div>
-  <div class="step" data-key="peeling-1" onclick="toggle(this,'peeling',5)">
-    <div class="checkbox"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5L5 9L13 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
-    <div class="step-body"><div class="step-title" id="title-tca1">TCA 35%</div></div>
-  </div>
-
-  <button class="reset-btn" onclick="resetTab('peeling',5)">↺ Resetar</button>
 </div>
 
 <div class="content" id="tab-config">
   <div class="settings-section">
-    <div class="settings-section-title">⏰ Horário do Banho</div>
+    <div class="settings-section-title">📦 Gerenciar Produtos</div>
+    
     <div class="settings-field">
-      <div class="settings-time-row"><input type="time" id="cfg-banho-time" value="12:00"></div>
+      <label class="settings-label">Nome do Gel / Produto Principal</label>
+      <input class="settings-input" id="cfg-gel" type="text" placeholder="Ex: continua refle">
+      <div class="btn-group">
+        <button class="settings-save-btn" onclick="saveConfig()">Adicionar / Salvar</button>
+        <button class="settings-del-btn" onclick="deleteProd('gel')">Retirar</button>
+      </div>
     </div>
-    <button class="settings-save-btn" onclick="saveConfig()">Salvar configurações</button>
-  </div>
 
-  <div class="settings-section">
-    <div class="settings-section-title">✨ Produtos</div>
-    <div class="settings-field"><label class="settings-label">Gel</label><input class="settings-input" id="cfg-gel" type="text" placeholder="Gel Anti-Oleosidade"></div>
-    <div class="settings-field"><label class="settings-label">Sérum</label><input class="settings-input" id="cfg-serum" type="text" placeholder="Sérum Secativo"></div>
-    <button class="settings-save-btn" onclick="saveConfig()">Salvar configurações</button>
+    <div class="settings-field" style="margin-top: 30px;">
+      <label class="settings-label">Nome do Sérum / Secativo</label>
+      <input class="settings-input" id="cfg-serum" type="text" placeholder="Ex: sérum x">
+      <div class="btn-group">
+        <button class="settings-save-btn" onclick="saveConfig()">Adicionar / Salvar</button>
+        <button class="settings-del-btn" onclick="deleteProd('serum')">Retirar</button>
+      </div>
+    </div>
   </div>
-  <span class="settings-reset-link" onclick="resetConfig()">↺ Restaurar padrões</span>
 </div>
 
 <div class="toast" id="toast"></div>
 
 <script>
-  // ESTRUTURA PARA SALVAR AUTOMATICAMENTE (PERSISTÊNCIA)
   function showTab(id, el) {
     document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
@@ -335,11 +224,8 @@
   function toggle(el, tabId, total) {
     el.classList.toggle('done');
     const key = el.getAttribute('data-key');
-    if (el.classList.contains('done')) {
-      localStorage.setItem('check-' + key, 'true');
-    } else {
-      localStorage.removeItem('check-' + key);
-    }
+    if (el.classList.contains('done')) localStorage.setItem('check-' + key, 'true');
+    else localStorage.removeItem('check-' + key);
     updateProgress(tabId, total);
   }
 
@@ -352,6 +238,39 @@
     txt.textContent = done + ' / ' + total;
   }
 
+  function saveConfig() {
+    const gel = document.getElementById('cfg-gel').value;
+    const serum = document.getElementById('cfg-serum').value;
+    localStorage.setItem('sk-gel', gel);
+    localStorage.setItem('sk-serum', serum);
+    applyNames();
+    showToast('Produto atualizado!');
+  }
+
+  function deleteProd(tipo) {
+    if(tipo === 'gel') {
+        localStorage.removeItem('sk-gel');
+        document.getElementById('cfg-gel').value = "";
+    } else {
+        localStorage.removeItem('sk-serum');
+        document.getElementById('cfg-serum').value = "";
+    }
+    applyNames();
+    showToast('Produto removido!');
+  }
+
+  function applyNames() {
+    const gel = localStorage.getItem('sk-gel') || "Gel Anti-Oleosidade";
+    const serum = localStorage.getItem('sk-serum') || "Sérum Secativo ✦";
+    
+    document.querySelectorAll('.class-gel').forEach(el => el.innerText = gel);
+    document.querySelectorAll('.class-serum').forEach(el => el.innerText = serum);
+    
+    // Preenche os inputs da aba config
+    document.getElementById('cfg-gel').value = localStorage.getItem('sk-gel') || "";
+    document.getElementById('cfg-serum').value = localStorage.getItem('sk-serum') || "";
+  }
+
   function resetTab(tabId, total) {
     const steps = document.getElementById('tab-' + tabId).querySelectorAll('.step');
     steps.forEach(s => {
@@ -359,48 +278,6 @@
       localStorage.removeItem('check-' + s.getAttribute('data-key'));
     });
     updateProgress(tabId, total);
-    showToast('Aba resetada!');
-  }
-
-  function loadChecks() {
-    document.querySelectorAll('.step').forEach(step => {
-      const key = step.getAttribute('data-key');
-      if (localStorage.getItem('check-' + key)) {
-        step.classList.add('done');
-      }
-    });
-    // Atualiza barras iniciais
-    updateProgress('manha', 4);
-    updateProgress('noite-af', 6);
-    updateProgress('noite-ac', 7);
-    updateProgress('virilha', 6);
-    updateProgress('peeling', 5);
-  }
-
-  // PEELING E CONFIG (Originais mantidos)
-  function savePeelingDate() {
-    const v = document.getElementById('peeling-date-input').value;
-    localStorage.setItem('skincare-peeling-date', v);
-    updatePeelingInfo();
-    showToast('Data salva!');
-  }
-
-  function updatePeelingInfo() {
-    const v = localStorage.getItem('skincare-peeling-date');
-    const box = document.getElementById('peeling-info');
-    if (!v) return;
-    document.getElementById('peeling-date-input').value = v;
-    box.className='peeling-info-box ok'; box.innerHTML='Data do peeling salva.';
-  }
-
-  function saveConfig() {
-    const cfg = {
-      banhoTime: document.getElementById('cfg-banho-time').value,
-      gel: document.getElementById('cfg-gel').value,
-      serum: document.getElementById('cfg-serum').value
-    };
-    localStorage.setItem('skincare-config', JSON.stringify(cfg));
-    showToast('Configurações salvas!');
   }
 
   function showToast(msg) {
@@ -410,8 +287,11 @@
   }
 
   window.onload = function() {
-    loadChecks();
-    updatePeelingInfo();
+    applyNames();
+    document.querySelectorAll('.step').forEach(step => {
+      if (localStorage.getItem('check-' + step.getAttribute('data-key'))) step.classList.add('done');
+    });
+    updateProgress('manha', 4);
   }
 </script>
 
